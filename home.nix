@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
-    ./nvf.nix
+    ./modules/nvf.nix
+    ./modules/tmuxconf.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -27,6 +28,7 @@
     go
     rustup
     lldb
+    tmux
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -67,7 +69,6 @@
     userName = "shm-wtag";
     userEmail = "maruf.shafique@welldev.io";
   };
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
