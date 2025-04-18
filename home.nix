@@ -105,9 +105,9 @@
         
         keymaps = [
           {
-            key = "<leader>h";
+            key = "<leader>e";
             mode = ["n"];
-            action = ":noh<CR>";
+            action = ":Neotree toggle<CR>";
             silent = true;
           }
         ];
