@@ -14,7 +14,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -77,12 +77,29 @@
         theme.name = "gruvbox";
         theme.style = "dark";
 
+        dashboard = {
+          alpha.enable = true;
+          dashboard-nvim.enable = true;
+        };
+
+        filetree = {
+          neo-tree = {
+            enable = true;
+          };
+        };
+
         languages = {
           enableLSP = true;
           enableTreesitter = true;
           nix.enable = true;
           ts.enable = true;
-          rust.enable = true;
+          rust = {
+            enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+            crates.enable = true;
+            format.enable = true;
+          };
           go.enable = true;
         };
         
@@ -115,10 +132,14 @@
         };
 
         assistant = {
+          copilot = {
+            enable = true;
+            cmp.enable = true;
+          };
           codecompanion-nvim = {
             enable = true;
             setupOpts.strategies.chat.adapter = "ollama";
-            setupOpts.strategies.inline.adapter = "ollama";
+            setupOpts.strategies.inline.adapter = "copilot";
             setupOpts.adapters = lib.generators.mkLuaInline ''
               require("codecompanion").setup({
                 adapters = {
