@@ -23,6 +23,11 @@
           };
         };
 
+        lsp = {
+          enable = true;
+          lspconfig.enable = true;
+        };
+
         languages = {
           enableLSP = true;
           enableTreesitter = true;
@@ -35,6 +40,7 @@
           rust = {
             enable = true;
             lsp.enable = true;
+            lsp.package = pkgs.rust-analyzer;
             treesitter.enable = true;
             crates.enable = true;
             format.enable = true;
