@@ -42,6 +42,12 @@
 				plugin = none-ls-nvim;
 				config = toLuaFile ./neovim/plugin/null-ls.lua;
 			}
+
+			{
+				plugin = nvim-autopairs;
+				config = toLua "require(\"nvim-autopairs\").setup()";
+			}
+
       # {
       #   plugin = telescope-nvim;
       #   config = toLuaFile ./neovim/plugin/telescope.lua;
