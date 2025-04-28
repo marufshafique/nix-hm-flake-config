@@ -18,6 +18,7 @@
     plugins = with pkgs.vimPlugins; [
       neodev-nvim
 			plenary-nvim
+			toggleterm-nvim
 
       {
         plugin = nvim-lspconfig;
@@ -73,6 +74,7 @@
 
     extraLuaConfig = ''
       ${builtins.readFile ./neovim/init.lua}
+			${builtins.readFile ./neovim/plugin/toggleterm.lua}
     '';
   };
 }
