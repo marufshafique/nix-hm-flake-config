@@ -16,6 +16,7 @@
 		];
     
     plugins = with pkgs.vimPlugins; [
+			neo-tree-nvim
       neodev-nvim
 			plenary-nvim
 			toggleterm-nvim
@@ -74,6 +75,7 @@
 
     extraLuaConfig = ''
       ${builtins.readFile ./neovim/init.lua}
+			${builtins.readFile ./neovim/keymaps.lua}
 			${builtins.readFile ./neovim/plugin/toggleterm.lua}
     '';
   };
