@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./modules/nvf.nix
+    # ./modules/nvf.nix
     ./modules/tmuxconf.nix
+    ./modules/neovim.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -22,6 +23,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    lua-language-server
+    xclip
+    wl-clipboard
+
     lazygit
     neofetch
     nil
@@ -29,6 +34,9 @@
     rustup
     lldb
     tmux
+
+    yazi
+    fzf
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
