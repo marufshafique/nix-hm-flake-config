@@ -44,12 +44,13 @@
 				config = toLua "require(\"nvim-autopairs\").setup()";
 			}
 
-      # {
-      #   plugin = telescope-nvim;
-      #   config = toLuaFile ./neovim/plugin/telescope.lua;
-      # }
+      telescope-fzf-native-nvim
+      {
+        plugin = telescope-nvim;
+        config = toLuaFile ./neovim/plugin/telescope.lua;
+      }
 
-      telescope-nvim
+      # telescope-nvim
 
       cmp_luasnip
       cmp-nvim-lsp
