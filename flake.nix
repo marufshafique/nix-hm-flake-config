@@ -2,33 +2,38 @@
   description = "Home Manager configuration of maruf";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nvf.url = "github:notashelf/nvf";
   };
 
-  # outputs = { nixpkgs, home-manager, nvf, ... }:
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      linux = "x86_64-linux";
+      mac = "aarch64-darwin";
+      # pkgs = nixpkgs.legacyPackages.${linux};
     in {
+      # home config for x86 linux
       homeConfigurations."maruf" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.${linux};
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [ 
-          # nvf.homeManagerModules.default 
           ./home.nix 
         ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+      };
+
+      # home config for aarch64 nix-darwin
+      homeConfigurations."marufs" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${mac};
+
+        modules = [ 
+          ./marufs.nix 
+        ];
       };
     };
 }

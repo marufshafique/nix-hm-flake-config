@@ -11,10 +11,6 @@
     viAlias = true;
     vimAlias = true;
 
-		extraPackages = with pkgs; [
-			stylua
-		];
-    
     plugins = with pkgs.vimPlugins; [
 			neo-tree-nvim
       neodev-nvim
@@ -72,6 +68,11 @@
           p.tree-sitter-lua
           p.tree-sitter-python
           p.tree-sitter-json
+					p.tree-sitter-vue
+					p.tree-sitter-rust
+					p.tree-sitter-javascript
+					p.tree-sitter-typescript
+					p.tree-sitter-css
         ]));
         config = toLuaFile ./neovim/plugin/treesitter.lua;
       }

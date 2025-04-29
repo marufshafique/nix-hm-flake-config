@@ -41,6 +41,7 @@ require("lspconfig").lua_ls.setup({
 	},
 })
 
+-- nix nil config
 require("lspconfig").nil_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -49,4 +50,28 @@ require("lspconfig").nil_ls.setup({
 require("lspconfig").rust_analyzer.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+})
+
+require("lspconfig").volar.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+require("lspconfig").ts_ls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	init_options = {
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = "/Users/marufs/.nvm/versions/node/v20.18.3/lib/node_modules/@vue/typescript-plugin",
+				languages = { "javascript", "typescript", "vue" },
+			},
+		},
+	},
+	filetypes = {
+		"javascript",
+		"typescript",
+		"vue",
+	},
 })
