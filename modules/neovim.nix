@@ -16,6 +16,10 @@
       neodev-nvim
 			plenary-nvim
 			toggleterm-nvim
+			{
+				plugin = gitsigns-nvim;
+				config = toLuaFile ./neovim/plugin/gitsigns.lua;
+			}
 
       {
         plugin = nvim-lspconfig;

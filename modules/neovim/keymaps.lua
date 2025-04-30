@@ -20,5 +20,8 @@ vim.keymap.set("n", "mm", "%", { noremap = true, silent = true })
 vim.keymap.set("n", "m", "v", { noremap = true, silent = true })
 
 
+-- telescope related keymaps
 vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>g", "<cmd>Telescope git_files<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
