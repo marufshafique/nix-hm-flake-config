@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { noremap = true, si
 
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>Q", "<cmd>q!<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>h", "<cmd>noh<cr>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
@@ -18,7 +19,6 @@ vim.keymap.set("n", "ge", "G", { noremap = true, silent = true })
 
 vim.keymap.set("n", "mm", "%", { noremap = true, silent = true })
 vim.keymap.set("n", "m", "v", { noremap = true, silent = true })
-
 
 -- telescope related keymaps
 vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<CR>", { noremap = true, silent = true })

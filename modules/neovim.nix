@@ -16,6 +16,16 @@
       neodev-nvim
 			plenary-nvim
 			toggleterm-nvim
+
+			{
+				plugin = copilot-lua;
+				config = toLuaFile ./neovim/plugin/copilot.lua;
+			}
+			{
+				plugin = codecompanion-nvim;
+				config = toLuaFile ./neovim/plugin/codecompanion.lua;
+			}
+
 			{
 				plugin = gitsigns-nvim;
 				config = toLuaFile ./neovim/plugin/gitsigns.lua;
