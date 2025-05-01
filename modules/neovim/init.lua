@@ -11,3 +11,6 @@ vim.o.shiftwidth = 2
 
 vim.o.termguicolors = true
 vim.o.wrap = false
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
