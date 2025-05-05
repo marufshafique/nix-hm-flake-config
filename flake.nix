@@ -13,7 +13,6 @@
     let
       linux = "x86_64-linux";
       mac = "aarch64-darwin";
-      # pkgs = nixpkgs.legacyPackages.${linux};
     in {
       # home config for x86 linux
       homeConfigurations."maruf" = home-manager.lib.homeManagerConfiguration {

@@ -18,6 +18,21 @@
 			toggleterm-nvim
 
 			{
+				plugin = harpoon2;
+				config = toLua "require('harpoon').setup()";
+			}
+
+			{
+				plugin = mini-indentscope;
+				config = toLuaFile ./neovim/plugin/indentscope.lua;
+			}
+			{
+				plugin = copilot-cmp;
+				config = toLua "require(\"copilot_cmp\").setup()";
+			}
+			
+
+			{
 				plugin = copilot-lua;
 				config = toLuaFile ./neovim/plugin/copilot.lua;
 			}

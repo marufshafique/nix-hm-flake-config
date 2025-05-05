@@ -23,6 +23,7 @@
 
 		fd
 		ripgrep
+		deno
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -56,6 +57,8 @@
 				*) export PATH="$PNPM_HOME:$PATH" ;;
 			esac
 			# pnpm end
+
+			[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
 		'';
     oh-my-zsh = {
       enable = true;
