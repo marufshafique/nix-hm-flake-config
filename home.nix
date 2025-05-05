@@ -23,20 +23,25 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    lua-language-server
     xclip
     wl-clipboard
 
     lazygit
     neofetch
-    nil
-    go
-    rustup
-    lldb
     tmux
 
     yazi
     fzf
+
+    go
+		nil
+		stylua
+		lua-language-server
+		vue-language-server
+		typescript
+
+		fd
+		ripgrep
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
