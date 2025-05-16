@@ -16,11 +16,7 @@
       neodev-nvim
 			plenary-nvim
 			toggleterm-nvim
-
-			{
-				plugin = harpoon2;
-				config = toLua "require('harpoon').setup()";
-			}
+			snipe-nvim
 
 			{
 				plugin = mini-indentscope;
@@ -52,7 +48,7 @@
       }
       {
         plugin = comment-nvim;
-        config = toLua "require(\"Comment\").setup()";
+        config = toLuaFile ./neovim/plugin/comment.lua;
       }
       {
         plugin = gruvbox-nvim;
@@ -114,6 +110,7 @@
       ${builtins.readFile ./neovim/init.lua}
 			${builtins.readFile ./neovim/keymaps.lua}
 			${builtins.readFile ./neovim/plugin/toggleterm.lua}
+			${builtins.readFile ./neovim/plugin/snipe.lua}
     '';
   };
 }

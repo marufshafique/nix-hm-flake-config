@@ -8,6 +8,10 @@ vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>Q", "<cmd>q!<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>h", "<cmd>noh<cr>", { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>db", "<cmd>bd<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>W", "<cmd>w!<cr>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
@@ -23,5 +27,5 @@ vim.keymap.set("n", "m", "v", { noremap = true, silent = true })
 -- telescope related keymaps
 vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<leader>g", "<cmd>Telescope git_files<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>go", "<cmd>Telescope git_status<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true, silent = true })

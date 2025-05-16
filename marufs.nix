@@ -17,9 +17,11 @@
 
 		nil
 		stylua
+		lua
 		lua-language-server
 		vue-language-server
 		typescript
+		nixd
 
 		fd
 		ripgrep

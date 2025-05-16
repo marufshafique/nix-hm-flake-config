@@ -1,1 +1,13 @@
-require("codecompanion").setup()
+require("codecompanion").setup({
+	strategies = {
+		chat = {
+			adapter = "copilot",
+		},
+		inline = {
+			adapter = "copilot",
+		},
+		cmd = {
+			adapter = "copilot",
+		},
+	},
+})
