@@ -8,6 +8,7 @@ require("null-ls").setup({
 	-- 	".git" -- fallback
 	-- ),
 	sources = {
+		-- require("none-ls.diagnostics.eslint"),,
 		require("null-ls").builtins.formatting.prettier, -- for JS/TS/HTML/CSS
 		require("null-ls").builtins.formatting.stylua, -- for Lua
 	},

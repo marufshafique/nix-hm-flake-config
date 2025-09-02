@@ -17,6 +17,7 @@
 			plenary-nvim
 			toggleterm-nvim
 			snipe-nvim
+      # none-ls-extras
 
 			{
 				plugin = mini-indentscope;

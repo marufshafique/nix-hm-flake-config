@@ -61,6 +61,10 @@
 			# pnpm end
 
 			[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
+
+			# add to ~/.zshrc
+			export BUN_INSTALL="$HOME/.bun"
+			export PATH="$BUN_INSTALL/bin:$PATH"
 		'';
     oh-my-zsh = {
       enable = true;
