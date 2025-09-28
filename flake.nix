@@ -46,8 +46,8 @@
                 nixpkgs.config.allowUnfree = true;
 
                 imports = [
-                  omarchy-nix.homeManagerModules.default
                   ./home.nix
+                  omarchy-nix.homeManagerModules.default
                 ];
               };
             };

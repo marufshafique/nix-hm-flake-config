@@ -29,13 +29,16 @@
     lazygit
     neofetch
     tmux
+    vim
     helix
 
     yazi
     fzf
 
+    nodejs
     go
     nil
+    nixd
     stylua
     lua-language-server
     vue-language-server
@@ -43,24 +46,9 @@
 
     fd
     ripgrep
+
+    bitwarden
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  # home.file = {
-  # };
-
-  # home.sessionVariables = {
-  # EDITOR = "emacs";
-  # };
-
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-    };
-  };
 
   # programs.git = {
   #   enable = true;
