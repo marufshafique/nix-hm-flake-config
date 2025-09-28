@@ -2,11 +2,10 @@
 
 {
   imports = [
-    ./modules/tmuxconf.nix
-    ./modules/neovim.nix
-    ./modules/helix.nix
+    ./modules
     ./modules/hyprland
   ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # home.username = "marufs";
