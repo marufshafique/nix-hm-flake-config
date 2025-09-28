@@ -1,15 +1,16 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    # ./modules/nvf.nix
     ./modules/tmuxconf.nix
     ./modules/neovim.nix
+    ./modules/helix.nix
+    ./modules/hyprland
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "maruf";
-  home.homeDirectory = "/home/maruf";
+  # home.username = "marufs";
+  # home.homeDirectory = "/home/marufs";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -29,29 +30,30 @@
     lazygit
     neofetch
     tmux
+    helix
 
     yazi
     fzf
 
     go
-		nil
-		stylua
-		lua-language-server
-		vue-language-server
-		typescript
+    nil
+    stylua
+    lua-language-server
+    vue-language-server
+    typescript
 
-		fd
-		ripgrep
+    fd
+    ripgrep
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
-  };
+  # home.file = {
+  # };
 
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+  # home.sessionVariables = {
+  # EDITOR = "emacs";
+  # };
 
   programs.zsh = {
     enable = true;
@@ -61,11 +63,11 @@
     };
   };
 
-  programs.git = {
-    enable = true;
-    userName = "shm-wtag";
-    userEmail = "maruf.shafique@welldev.io";
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userName = "shm-wtag";
+  #   userEmail = "maruf.shafique@welldev.io";
+  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

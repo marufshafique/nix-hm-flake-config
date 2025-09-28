@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   programs.tmux = {
@@ -31,5 +31,4 @@
       run '~/.tmux/plugins/tpm/tpm'
     '';
   };
-
 }
