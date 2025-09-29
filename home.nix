@@ -34,6 +34,7 @@
 
     yazi
     fzf
+    tree
 
     nodejs
     go
@@ -46,6 +47,7 @@
 
     fd
     ripgrep
+    firefox
 
     bitwarden
   ];
