@@ -16,12 +16,16 @@
     go
 
 		nil
+		nixd
+
 		stylua
 		lua
 		lua-language-server
 		vue-language-server
+
 		typescript
-		nixd
+
+    tree
 
 		fd
 		ripgrep
