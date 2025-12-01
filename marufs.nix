@@ -2,8 +2,8 @@
 
 {
   imports = [
-    # ./modules/nvf.nix
-    # ./modules/tmuxconf.nix
+    ./modules/tmuxconf.nix
+		./modules/helix.nix
     ./modules/neovim.nix
   ];
 
