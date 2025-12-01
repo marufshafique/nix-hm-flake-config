@@ -24,6 +24,7 @@
 		vue-language-server
 
 		typescript
+		nodejs_24
 
     tree
 

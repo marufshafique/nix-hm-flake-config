@@ -3,7 +3,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "base16_transparent";
+      theme = "dark_plus";
       editor = {
         true-color = true;
         line-number = "relative";
@@ -18,6 +18,10 @@
     };
     languages = {
       language = [
+        {
+          name = "vue";
+          auto-format = false;
+        }
         {
           name = "rust";
           auto-format = false;
