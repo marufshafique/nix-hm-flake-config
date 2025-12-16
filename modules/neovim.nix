@@ -19,6 +19,12 @@
 			snipe-nvim
       copilot-vim
 
+
+			{
+				plugin = trouble-nvim;
+				config = toLuaFile ./neovim/plugin/trouble-nvim.lua;
+			}
+
 			{
 				plugin = mini-indentscope;
 				config = toLuaFile ./neovim/plugin/indentscope.lua;

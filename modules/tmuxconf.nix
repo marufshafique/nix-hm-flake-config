@@ -5,6 +5,7 @@
     enable = true;
     keyMode = "vi";
     shortcut = "Space";
+		shell = "${pkgs.zsh}/bin/zsh";
     escapeTime = 0;
     mouse = true;
     plugins = with pkgs.tmuxPlugins; [

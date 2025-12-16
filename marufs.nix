@@ -14,6 +14,7 @@
 
   home.packages = with pkgs; [
     go
+		gopls
 
 		nil
 		nixd
@@ -24,7 +25,16 @@
 		vue-language-server
 
 		typescript
+		typescript-language-server
+		tailwindcss-language-server
 		nodejs_24
+
+		yarn
+		eslint
+		eslint_d
+		prettier
+		emmet-ls
+		emmet-language-server
 
     tree
 
@@ -56,6 +66,7 @@
 			export PATH=$PATH:$(npm bin -g)
 			export DPRINT_INSTALL="/Users/marufs/.dprint"
 			export PATH="$DPRINT_INSTALL/bin:$PATH"
+			export PATH="$HOME/.npm-global/bin:$PATH"
 
 			# pnpm
 			export PNPM_HOME="/Users/marufs/Library/pnpm"
