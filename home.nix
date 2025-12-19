@@ -3,7 +3,7 @@
 {
   imports = [
     ./modules
-    ./modules/hyprland
+    # ./modules/hyprland
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -44,6 +44,7 @@
     lua-language-server
     vue-language-server
     typescript
+    alacritty
 
     fd
     ripgrep
@@ -52,11 +53,11 @@
     bitwarden
   ];
 
-  # programs.git = {
-  #   enable = true;
-  #   userName = "shm-wtag";
-  #   userEmail = "maruf.shafique@welldev.io";
-  # };
+  programs.git = {
+    enable = true;
+    userName = "shm-wtag";
+    userEmail = "maruf.shafique@welldev.io";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

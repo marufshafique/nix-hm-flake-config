@@ -19,6 +19,14 @@
     "flakes"
   ];
 
+  services.displayManager.cosmic-greeter = {
+    enable = true;
+  };
+
+  services.desktopManager.cosmic = {
+    enable = true;
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
