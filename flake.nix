@@ -55,18 +55,12 @@
         ];
       };
 
-      # home config for x86 linux
-      homeConfigurations."maruf" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${linux};
-
-        modules = [
-          ./home.nix
-        ];
-      };
-
       # home config for aarch64 nix-darwin
       homeConfigurations."marufs" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${mac};
+        pkgs = import nixpkgs {
+          system = mac;
+          config.allowUnfree = true;
+        };
 
         modules = [
           ./marufs.nix

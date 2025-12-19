@@ -55,10 +55,10 @@ require("lspconfig").rust_analyzer.setup({
 	capabilities = capabilities,
 })
 
-require("lspconfig").volar.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+-- require("lspconfig").volar.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- })
 
 require("lspconfig").emmet_ls.setup({
 	on_attach = on_attach,
@@ -74,6 +74,11 @@ require("lspconfig").tailwindcss.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "html", "css", "vue" },
+})
+
+require("lspconfig").gopls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
 require("lspconfig").ts_ls.setup({

@@ -17,17 +17,18 @@
 			plenary-nvim
 			toggleterm-nvim
 			snipe-nvim
-      # none-ls-extras
+      copilot-vim
+
+
+			{
+				plugin = trouble-nvim;
+				config = toLuaFile ./neovim/plugin/trouble-nvim.lua;
+			}
 
 			{
 				plugin = mini-indentscope;
 				config = toLuaFile ./neovim/plugin/indentscope.lua;
 			}
-			{
-				plugin = copilot-cmp;
-				config = toLua "require(\"copilot_cmp\").setup()";
-			}
-			
 
 			{
 				plugin = copilot-lua;
