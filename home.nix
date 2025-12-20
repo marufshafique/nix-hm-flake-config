@@ -36,8 +36,11 @@
     fzf
     tree
 
+		gcc
     nodejs
     go
+		goose
+		gopls
     nil
     nixd
     stylua
@@ -51,6 +54,9 @@
     firefox
 
     bitwarden
+
+		docker
+		docker-compose
   ];
 
   programs.git = {

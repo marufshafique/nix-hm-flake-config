@@ -1,10 +1,13 @@
 { ... }:
 {
   programs.ghostty = {
+		enable = true;
     enableZshIntegration = true;
     settings = {
-      font-size = 18;
-      # shell-integration = "zsh";
+      font-size = 16;
+      shell-integration = "zsh";
+			window-decoration = "none";
+			window-theme = "dark";
     };
   };
 }
