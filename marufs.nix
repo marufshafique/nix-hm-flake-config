@@ -16,6 +16,8 @@
     go
 		gopls
 
+		postgresql
+
 		nil
 		nixd
 
@@ -81,6 +83,7 @@
 			# add to ~/.zshrc
 			export BUN_INSTALL="$HOME/.bun"
 			export PATH="$BUN_INSTALL/bin:$PATH"
+			export PATH=$HOME/go/bin:$PATH
 		'';
     oh-my-zsh = {
       enable = true;
