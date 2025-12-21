@@ -5,6 +5,8 @@
     ./modules/tmuxconf.nix
 		./modules/helix.nix
     ./modules/neovim.nix
+		# ./modules/fish.nix
+		# ./modules/ghostty.nix
   ];
 
   home.username = "marufs";
@@ -56,8 +58,8 @@
 
   programs.zsh = {
     enable = true;
+    syntaxHighlighting.enable = true;
 		initContent = ''
-			unset TMUX
 			export NVM_DIR="$HOME/.nvm"
 				[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 				[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
