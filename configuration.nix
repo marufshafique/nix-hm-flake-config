@@ -25,6 +25,11 @@
 
   services.desktopManager.cosmic = {
     enable = true;
+		xwayland.enable = true;
+  };
+
+  services.tailscale = {
+    enable = true;
   };
 
   # Allow unfree packages

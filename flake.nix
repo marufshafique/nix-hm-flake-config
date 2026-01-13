@@ -3,14 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    # omarchy-nix = {
-    #   url = "github:henrysipp/omarchy-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+        # to have it up-to-date or simply don't specify the nixpkgs input
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
   };
 
@@ -19,6 +23,7 @@
       nixpkgs,
       # omarchy-nix,
       home-manager,
+      zen-browser,
       ...
     }:
     let
@@ -31,23 +36,15 @@
 
         modules = [
           ./configuration.nix
-          # omarchy-nix.nixosModules.default
           home-manager.nixosModules.home-manager # Add this import
           {
-            # Configure omarchy
-            # omarchy = {
-            #   full_name = "Maruf Shafique";
-            #   email_address = "imaruf.m@gmail.com";
-            #   theme = "tokyo-night";
-            # };
-
             home-manager = {
               users.marufs = {
                 nixpkgs.config.allowUnfree = true;
 
                 imports = [
                   ./home.nix
-                  # omarchy-nix.homeManagerModules.default
+                  zen-browser.homeModules.beta
                 ];
               };
             };

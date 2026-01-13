@@ -3,7 +3,6 @@
 {
   imports = [
     ./modules
-    # ./modules/hyprland
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -26,6 +25,7 @@
     xclip
     wl-clipboard
 
+    dig
     lazygit
     neofetch
     tmux
@@ -36,18 +36,19 @@
     fzf
     tree
 
-		gcc
+    gcc
     nodejs
     go
-		goose
-		gopls
+    goose
+    gopls
     nil
     nixd
     stylua
     lua-language-server
     vue-language-server
     typescript
-    alacritty
+
+    postgresql
 
     fd
     ripgrep
@@ -55,14 +56,20 @@
 
     bitwarden
 
-		docker
-		docker-compose
+    chromium
+    google-chrome
+
+    cloudflared
   ];
 
   programs.git = {
     enable = true;
     userName = "shm-wtag";
     userEmail = "maruf.shafique@welldev.io";
+  };
+
+  programs.zen-browser = {
+    enable = true;
   };
 
   # Let Home Manager install and manage itself.
