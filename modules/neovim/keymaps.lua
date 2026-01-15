@@ -29,3 +29,6 @@ vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<CR>", { noremap = tr
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>go", "<cmd>Telescope git_status<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>c", "gcc", { remap = true })
+vim.keymap.set("v", "<leader>c", "gc", { remap = true })

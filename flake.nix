@@ -3,11 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    # omarchy-nix = {
-    #   url = "github:henrysipp/omarchy-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
+		neovim.url = "nixpkgs/f1e8ae508a9a467a9f51d29b8639e96db2b52c30";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +13,6 @@
   outputs =
     {
       nixpkgs,
-      # omarchy-nix,
       home-manager,
       ...
     }:
@@ -31,23 +26,14 @@
 
         modules = [
           ./configuration.nix
-          # omarchy-nix.nixosModules.default
           home-manager.nixosModules.home-manager # Add this import
           {
-            # Configure omarchy
-            # omarchy = {
-            #   full_name = "Maruf Shafique";
-            #   email_address = "imaruf.m@gmail.com";
-            #   theme = "tokyo-night";
-            # };
-
             home-manager = {
               users.marufs = {
                 nixpkgs.config.allowUnfree = true;
 
                 imports = [
                   ./home.nix
-                  # omarchy-nix.homeManagerModules.default
                 ];
               };
             };
