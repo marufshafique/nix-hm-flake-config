@@ -59,6 +59,8 @@
     chromium
     google-chrome
 
+    golangci-lint-langserver
+
     cloudflared
   ];
 
