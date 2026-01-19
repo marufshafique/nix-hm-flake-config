@@ -26,7 +26,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("neodev").setup({})
-require("lspconfig").lua_ls.setup({
+
+vim.lsp.enable("lua_ls")
+vim.lsp.config("lua_ls", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = function()
@@ -45,12 +47,14 @@ require("lspconfig").lua_ls.setup({
 })
 
 -- nix nil config
-require("lspconfig").nixd.setup({
+vim.lsp.enable("nixd")
+vim.lsp.config("nixd", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-require("lspconfig").rust_analyzer.setup({
+vim.lsp.enable("rust_analyzer")
+vim.lsp.config("rust_analyzer", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -60,28 +64,33 @@ require("lspconfig").rust_analyzer.setup({
 -- 	capabilities = capabilities,
 -- })
 
-require("lspconfig").emmet_ls.setup({
+vim.lsp.enable("emmet_ls")
+vim.lsp.config("emmet_ls", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-require("lspconfig").svelte.setup({
+vim.lsp.enable("svelte")
+vim.lsp.config("svelte", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-require("lspconfig").tailwindcss.setup({
+vim.lsp.enable("tailwindcss")
+vim.lsp.config("tailwindcss", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "html", "css", "vue" },
 })
 
-require("lspconfig").gopls.setup({
+vim.lsp.enable("gopls")
+vim.lsp.config("gopls", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-require("lspconfig").ts_ls.setup({
+vim.lsp.enable("ts_ls")
+vim.lsp.config("ts_ls", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	init_options = {

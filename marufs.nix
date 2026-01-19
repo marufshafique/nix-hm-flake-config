@@ -1,10 +1,12 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     ./modules/tmuxconf.nix
 		./modules/helix.nix
     ./modules/neovim.nix
+		# ./modules/fish.nix
+		# ./modules/ghostty.nix
   ];
 
   home.username = "marufs";
@@ -15,6 +17,8 @@
   home.packages = with pkgs; [
     go
 		gopls
+
+		postgresql
 
 		nil
 		nixd
@@ -54,8 +58,8 @@
 
   programs.zsh = {
     enable = true;
+    syntaxHighlighting.enable = true;
 		initContent = ''
-			unset TMUX
 			export NVM_DIR="$HOME/.nvm"
 				[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 				[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
@@ -81,6 +85,7 @@
 			# add to ~/.zshrc
 			export BUN_INSTALL="$HOME/.bun"
 			export PATH="$BUN_INSTALL/bin:$PATH"
+			export PATH=$HOME/go/bin:$PATH
 		'';
     oh-my-zsh = {
       enable = true;

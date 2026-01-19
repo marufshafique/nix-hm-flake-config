@@ -17,11 +17,9 @@
       };
     };
   };
-
   outputs =
     {
       nixpkgs,
-      # omarchy-nix,
       home-manager,
       zen-browser,
       ...

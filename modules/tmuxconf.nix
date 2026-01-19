@@ -5,7 +5,6 @@
     enable = true;
     keyMode = "vi";
     shortcut = "Space";
-		shell = "${pkgs.zsh}/bin/zsh";
     escapeTime = 0;
     mouse = true;
     plugins = with pkgs.tmuxPlugins; [
@@ -24,6 +23,7 @@
     ];
     extraConfig = ''
       set -g status-position top
+			set -g default-command "${pkgs.zsh}/bin/zsh"
 
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
