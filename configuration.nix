@@ -20,9 +20,18 @@
 
   services.desktopManager.cosmic = {
     enable = true;
+		xwayland.enable = true;
+  };
+
+  services.tailscale = {
+    enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
+
+	fonts.packages = with pkgs; [ 
+		nerd-fonts.droid-sans-mono
+	];
 
 
   # This value determines the NixOS release from which the default

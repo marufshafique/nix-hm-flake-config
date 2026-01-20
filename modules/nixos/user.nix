@@ -1,5 +1,10 @@
 { pkgs, ... }:
 {
+  virtualisation.docker = {
+    enable = true;
+    extraOptions = "--iptables=false";
+  };
+
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marufs = {
@@ -10,6 +15,11 @@
       "networkmanager"
       "wheel"
       "docker"
+      "docker-compose"
+    ];
+    packages = with pkgs; [
+      docker
+      docker-compose
     ];
   };
 }

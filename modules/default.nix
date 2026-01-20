@@ -7,6 +7,6 @@
 		./tmuxconf.nix
 		./ghostty.nix
 		./zsh.nix
-		./hyprland
+		./alacritty.nix
 	];
 }
