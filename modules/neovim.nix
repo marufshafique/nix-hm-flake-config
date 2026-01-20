@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, neovimPkgs, ... }:
 
 {
   programs.neovim =
@@ -8,10 +8,11 @@
   in
   {
     enable = true;
+		package = neovimPkgs.neovim-unwrapped;
     viAlias = true;
     vimAlias = true;
 
-    plugins = with pkgs.vimPlugins; [
+    plugins = with neovimPkgs.vimPlugins; [
 			neo-tree-nvim
       neodev-nvim
 			plenary-nvim

@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "neovim": {
+      "locked": {
+        "lastModified": 1759036355,
+        "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e9f00bd893984bc8ce46c895c3bf7cac95331127",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e9f00bd893984bc8ce46c895c3bf7cac95331127",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1759036355,
@@ -39,6 +55,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "neovim": "neovim",
         "nixpkgs": "nixpkgs",
         "zen-browser": "zen-browser"
       }
