@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-		neovim.url = "github:nixos/nixpkgs?rev=e9f00bd893984bc8ce46c895c3bf7cac95331127";
+    neovim.url = "github:nixos/nixpkgs?rev=e9f00bd893984bc8ce46c895c3bf7cac95331127";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +38,13 @@
           home-manager.nixosModules.home-manager # Add this import
           {
             home-manager = {
+
+              extraSpecialArgs = {
+                neovimPkgs = import inputs.neovim {
+                  system = linux;
+                  config.allowUnfree = true;
+                };
+              };
               users.marufs = {
                 nixpkgs.config.allowUnfree = true;
 
@@ -58,12 +65,12 @@
           config.allowUnfree = true;
         };
 
-				extraSpecialArgs = {
-					neovimPkgs = import inputs.neovim {
-						system = mac;
-						config.allowUnfree = true;
-					};
-				};
+        extraSpecialArgs = {
+          neovimPkgs = import inputs.neovim {
+            system = mac;
+            config.allowUnfree = true;
+          };
+        };
 
         modules = [
           ./marufs.nix

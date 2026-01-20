@@ -54,7 +54,7 @@
     ripgrep
     firefox
 
-    bitwarden
+    bitwarden-desktop
 
     chromium
     google-chrome
