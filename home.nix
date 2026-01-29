@@ -32,12 +32,15 @@
     vim
     helix
 
+		postman
+
     yazi
     fzf
     tree
 
     gcc
     nodejs
+		bun
     go
     goose
     gopls
@@ -48,11 +51,16 @@
     vue-language-server
     typescript
 
+		xwayland-satellite
+
     postgresql
 
     fd
     ripgrep
     firefox
+
+		bibata-cursors
+		adwaita-icon-theme
 
     bitwarden-desktop
 

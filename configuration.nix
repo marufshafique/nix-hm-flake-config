@@ -1,9 +1,20 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./modules/nixos
   ];
+
+	hardware.bluetooth.enable = true;
+
+	# Niri specific environment variables
+	# Safe to revmove on other DE
+	environment.variables.MOZ_ENABLE_WAYLAND = "1";
+	environment.variables = {
+		XCURSOR_THEME = "Adwaita";
+		XCURSOR_SIZE = "24";
+	};
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -15,11 +26,43 @@
   ];
 
   services.displayManager.cosmic-greeter = {
+    enable = false;
+  };
+
+  services.displayManager.dms-greeter = {
+    enable = true;
+    compositor.name = "niri";
+  };
+
+  programs.niri = {
     enable = true;
   };
 
-  services.desktopManager.cosmic = {
+  programs.dms-shell = {
     enable = true;
+
+    systemd = {
+      enable = true;
+      restartIfChanged = true;
+    };
+
+    enableSystemMonitoring = true;
+    # enableClipboard = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
+  };
+
+  programs.dsearch = {
+    enable = true;
+
+    systemd = {
+      enable = true;
+    };
+  };
+
+  services.desktopManager.cosmic = {
+    enable = false;
 		xwayland.enable = true;
   };
 

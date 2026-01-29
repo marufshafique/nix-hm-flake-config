@@ -7,14 +7,11 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   # Enable networking
+	networking.enableIPv6 = true;
   networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  #
-  networking.nftables = {
-    enable = true;
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
