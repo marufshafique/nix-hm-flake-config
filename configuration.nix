@@ -5,8 +5,6 @@
     ./modules/nixos
   ];
 
-	hardware.bluetooth.enable = true;
-
 	# Niri specific environment variables
 	# Safe to revmove on other DE
 	environment.variables.MOZ_ENABLE_WAYLAND = "1";
@@ -25,6 +23,10 @@
     "flakes"
   ];
 
+	services.udev.extraRules = ''
+	  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666"
+	'';
+
   services.displayManager.cosmic-greeter = {
     enable = false;
   };
@@ -33,6 +35,8 @@
     enable = true;
     compositor.name = "niri";
   };
+
+	services.postgresql.enable = true;
 
   programs.niri = {
     enable = true;

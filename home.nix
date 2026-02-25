@@ -50,6 +50,14 @@
     lua-language-server
     vue-language-server
     typescript
+		typescript-language-server
+		tailwindcss-language-server
+		emmet-ls
+		sqlite
+
+		evince
+		zathura
+		nautilus
 
 		xwayland-satellite
 
