@@ -28,10 +28,12 @@
 		lua-language-server
 		vue-language-server
 
+		ffmpeg
+
 		typescript
 		typescript-language-server
 		tailwindcss-language-server
-		nodejs_24
+		nodejs
 
 		yarn
 		eslint
@@ -39,6 +41,8 @@
 		prettier
 		emmet-ls
 		emmet-language-server
+
+		cloudflared
 
     tree
 
