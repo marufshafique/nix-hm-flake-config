@@ -1,4 +1,4 @@
-{ pkgs, neovimPkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -17,6 +17,7 @@
   home.packages = with pkgs; [
     go
 		gopls
+		tinygo
 
 		postgresql
 
