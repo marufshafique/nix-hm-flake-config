@@ -14,8 +14,11 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+			"video"
+			"input"
       "docker"
       "docker-compose"
+			"i2c"
     ];
     packages = with pkgs; [
       docker

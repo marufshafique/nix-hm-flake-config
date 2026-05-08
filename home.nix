@@ -22,15 +22,14 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    xclip
-    wl-clipboard
-
     dig
     lazygit
     neofetch
     tmux
     vim
     helix
+
+		ddcutil
 
 		postman
 
@@ -44,6 +43,9 @@
     go
     goose
     gopls
+		cobra-cli
+		golangci-lint
+
     nil
     nixd
     stylua
@@ -54,11 +56,25 @@
 		tailwindcss-language-server
 		emmet-ls
 		sqlite
+		go-migrate
+		wlr-which-key
+
+		steam
+
+		mpv
+
+		# cmake
+		gnumake
+
+
+		(kicad.override {
+			with3d = true;
+		})
 
 		evince
-		zathura
 		nautilus
 
+		xwayland
 		xwayland-satellite
 
     postgresql

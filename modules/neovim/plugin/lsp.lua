@@ -97,7 +97,7 @@ vim.lsp.config("ts_ls", {
 		plugins = {
 			{
 				name = "@vue/typescript-plugin",
-				location = "/Users/marufs/.nvm/versions/node/v20.18.3/lib/node_modules/@vue/typescript-plugin",
+				location = "/home/marufs/.npm-global/lib/node_modules/@vue/typescript-plugin",
 				languages = { "javascript", "typescript", "vue" },
 			},
 		},

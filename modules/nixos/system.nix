@@ -6,6 +6,12 @@
 
 	boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
+	hardware.graphics = {
+		enable = true;
+		enable32Bit = true;
+	};
+	# hardware.graphics.driSupport32Bit = true;
+
 	hardware.bluetooth = {
 		enable = true;
 		powerOnBoot = true;
@@ -20,6 +26,13 @@
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+	security = {
+		pki = {
+			# enb = true;
+			certificates = [];
+		};
+	};
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;

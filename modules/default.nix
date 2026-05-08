@@ -8,5 +8,6 @@
 		./ghostty.nix
 		./zsh.nix
 		./alacritty.nix
+		./zathura.nix
 	];
 }

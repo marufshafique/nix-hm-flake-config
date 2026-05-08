@@ -9,6 +9,8 @@
         line-number = "relative";
         mouse = true;
         lsp.display-messages = true;
+        tab-width = 2;
+        indent-unit = "  ";
       };
       editor.cursor-shape = {
         insert = "bar";
@@ -20,6 +22,10 @@
       language = [
         {
           name = "vue";
+          auto-format = false;
+        }
+        {
+          name = "go";
           auto-format = false;
         }
         {
