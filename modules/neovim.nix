@@ -1,5 +1,15 @@
 { pkgs, neovimPkgs, ... }:
-
+let
+  tinygo-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "tinygo-vin";
+    src = pkgs.fetchFromGitHub {
+      owner = "sago35";
+      repo = "tinygo.vim";
+      rev = "main"; # or a specific commit hash
+      sha256 = "sha256-CHwSpQ4IClXe6NHTqPM8l8ET4rHFeNVYX7vfewkxSy0="; # Replace with actual hash
+    };
+  };
+in
 {
   programs.neovim =
   let
@@ -8,7 +18,7 @@
   in
   {
     enable = true;
-		package = neovimPkgs.neovim-unwrapped;
+		# package = neovimPkgs.neovim-unwrapped;
     viAlias = true;
     vimAlias = true;
 
@@ -19,6 +29,7 @@
 			toggleterm-nvim
 			snipe-nvim
       copilot-vim
+      tinygo-vim
 
 
 			{
