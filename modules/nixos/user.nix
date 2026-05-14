@@ -2,7 +2,14 @@
 {
   virtualisation.docker = {
     enable = true;
-    extraOptions = "--iptables=false";
+    extraOptions = ''
+      --ipv6 
+      --fixed-cidr-v6="fd00:db8:1::/64"
+      --experimental
+      --ip6tables
+      --dns="8.8.8.8"
+      --dns="2001:4860:4860::8888"
+    '';
   };
 
   programs.zsh.enable = true;
@@ -14,11 +21,11 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-			"video"
-			"input"
+      "video"
+      "input"
       "docker"
       "docker-compose"
-			"i2c"
+      "i2c"
     ];
     packages = with pkgs; [
       docker

@@ -61,6 +61,9 @@
 
 		steam
 
+    tailscale
+
+    vlc
 		mpv
 
 		# cmake

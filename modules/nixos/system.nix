@@ -4,8 +4,6 @@
   services.fwupd.enable = true;
   services.fstrim.enable = true;
 
-	boot.kernelParams = [ "usbcore.autosuspend=-1" ];
-
 	hardware.graphics = {
 		enable = true;
 		enable32Bit = true;
