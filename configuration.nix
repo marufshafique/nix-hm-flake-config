@@ -5,27 +5,28 @@
     ./modules/nixos
   ];
 
-	# Niri specific environment variables
-	# Safe to revmove on other DE
-	environment.variables.MOZ_ENABLE_WAYLAND = "1";
-	environment.variables = {
-		XCURSOR_THEME = "Adwaita";
-		XCURSOR_SIZE = "24";
-		GREENLIGHT_DB_DNS = "postgres://greenlight:4514@localhost/greenlight?sslmode=disable";
-	};
-	environment.systemPackages = with pkgs; [
-		cacert
-	];
+  # Niri specific environment variables
+  # Safe to revmove on other DE
+  environment.variables.MOZ_ENABLE_WAYLAND = "1";
+  environment.variables = {
+    XCURSOR_THEME = "Adwaita";
+    XCURSOR_SIZE = "24";
+    GREENLIGHT_DB_DNS = "postgres://greenlight:4514@localhost/greenlight?sslmode=disable";
+  };
+  environment.systemPackages = with pkgs; [
+    cacert
+  ];
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
 
-	services.udev.extraRules = ''
-	  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666"
-	'';
+  services.udev.extraRules = ''
+    	  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666"
+    	'';
 
+  services.ollama.enable = true;
   services.displayManager.cosmic-greeter = {
     enable = false;
   };
@@ -35,7 +36,7 @@
     compositor.name = "niri";
   };
 
-	services.postgresql.enable = true;
+  services.postgresql.enable = true;
 
   programs.niri = {
     enable = true;
@@ -66,7 +67,7 @@
 
   services.desktopManager.cosmic = {
     enable = false;
-		xwayland.enable = true;
+    xwayland.enable = true;
   };
 
   services.tailscale = {
@@ -75,10 +76,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
-	fonts.packages = with pkgs; [ 
-		nerd-fonts.droid-sans-mono
-	];
-
+  fonts.packages = with pkgs; [
+    nerd-fonts.droid-sans-mono
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

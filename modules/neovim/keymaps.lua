@@ -1,5 +1,5 @@
 vim.keymap.set("n", "<leader>lf", function()
-	vim.lsp.buf.format()
+  vim.lsp.buf.format()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { noremap = true, silent = true })
@@ -32,3 +32,5 @@ vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { noremap = tru
 
 vim.keymap.set("n", "<leader>c", "gcc", { remap = true })
 vim.keymap.set("v", "<leader>c", "gc", { remap = true })
+
+vim.keymap.set("n", "<leader>gl", vim.diagnostic.open_float)

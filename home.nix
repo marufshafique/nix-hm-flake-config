@@ -24,14 +24,14 @@
   home.packages = with pkgs; [
     dig
     lazygit
-    neofetch
+    fastfetch
     tmux
     vim
     helix
 
-		ddcutil
+    ddcutil
 
-		postman
+    postman
 
     yazi
     fzf
@@ -39,12 +39,12 @@
 
     gcc
     nodejs
-		bun
+    bun
     go
     goose
     gopls
-		cobra-cli
-		golangci-lint
+    cobra-cli
+    golangci-lint
 
     nil
     nixd
@@ -52,33 +52,32 @@
     lua-language-server
     vue-language-server
     typescript
-		typescript-language-server
-		tailwindcss-language-server
-		emmet-ls
-		sqlite
-		go-migrate
-		wlr-which-key
+    typescript-language-server
+    tailwindcss-language-server
+    emmet-ls
+    sqlite
+    go-migrate
+    wlr-which-key
 
-		steam
+    steam
 
     tailscale
 
     vlc
-		mpv
+    mpv
 
-		# cmake
-		gnumake
+    # cmake
+    gnumake
 
+    (kicad.override {
+      with3d = true;
+    })
 
-		(kicad.override {
-			with3d = true;
-		})
+    evince
+    nautilus
 
-		evince
-		nautilus
-
-		xwayland
-		xwayland-satellite
+    xwayland
+    xwayland-satellite
 
     postgresql
 
@@ -86,8 +85,8 @@
     ripgrep
     firefox
 
-		bibata-cursors
-		adwaita-icon-theme
+    bibata-cursors
+    adwaita-icon-theme
 
     bitwarden-desktop
 
@@ -97,12 +96,22 @@
     golangci-lint-langserver
 
     cloudflared
+
+    ollama-vulkan
+
+    vscode-langservers-extracted
+    eslint
+    eslint_d
   ];
 
   programs.git = {
     enable = true;
-    userName = "shm-wtag";
-    userEmail = "maruf.shafique@welldev.io";
+    settings = {
+      user = {
+        name = "shm-wtag";
+        email = "maruf.shafique@welldev.io";
+      };
+    };
   };
 
   programs.zen-browser = {
