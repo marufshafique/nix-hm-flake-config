@@ -39,6 +39,7 @@
 
     gcc
     nodejs
+    yarn
     bun
     go
     goose
@@ -102,6 +103,8 @@
     vscode-langservers-extracted
     eslint
     eslint_d
+
+    tree-sitter
   ];
 
   programs.git = {

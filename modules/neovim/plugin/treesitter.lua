@@ -1,5 +1,5 @@
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {},
+require("nvim-treesitter").setup({
+	ensure_installed = {"html", "css", "vue", "javascript", "javascriptreact", "typescript", "typescriptreact"},
 
 	auto_install = false,
 
