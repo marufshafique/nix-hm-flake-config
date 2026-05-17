@@ -36,6 +36,11 @@ in
       nvim-web-devicons
 
       {
+        plugin = mini-clue;
+        config = toLuaFile ./neovim/plugin/mini-clue.lua;
+      }
+
+      {
         plugin = gruvbox-nvim;
         type = "viml";
         config = "colorscheme gruvbox";
