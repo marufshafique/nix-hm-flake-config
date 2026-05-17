@@ -4,7 +4,7 @@
   imports = [
     ./modules/tmuxconf.nix
 		./modules/helix.nix
-    ./modules/neovim.nix
+		./modules/neovim.new.nix
 		# ./modules/fish.nix
 		# ./modules/ghostty.nix
   ];

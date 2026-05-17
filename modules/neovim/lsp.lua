@@ -19,13 +19,12 @@ vim.lsp.enable({
   'nixd',
   'gopls',
   'ts_ls',
-  -- 'rust_analyzer',
-  -- 'ts_ls', 'vtls', 'vue_ls', 'eslint', 'tailwindcss'
+  'vue',
 })
 
 vim.lsp.config('gopls', {
   cmd = { 'gopls' },
-  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  filetypes = { 'go', 'gomod' },
   root_markers = { 'go.work', 'go.mod', '.git' },
   settings = {
     gopls = {
@@ -39,14 +38,12 @@ vim.lsp.config('gopls', {
 })
 
 vim.lsp.config("ts_ls", {
-  -- on_attach = on_attach,
-  -- capabilities = capabilities,
   cmd = { 'typescript-language-server', '--stdio' },
   init_options = {
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/home/marufs/.npm-global/lib/node_modules/@vue/typescript-plugin",
+        location = "/Users/marufs/.nvm/versions/node/v20.18.3/lib/node_modules/@vue/typescript-plugin",
         languages = { "javascript", "typescript", "vue" },
       },
     },
@@ -74,66 +71,41 @@ vim.lsp.config('lua_ls', {
   },
 })
 
-
--- TypeScript/JavaScript Server (ts_ls)
--- vim.lsp.config('ts_ls', {
---   filetypes = {
---     'vue',
---     'javascript',
---     'javascriptreact',
---     'typescript',
---     'typescriptreact',
---   },
---   root_dir = vim.fs.root(0, { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' }),
---   settings = {
---     typescript = {
---       preferences = {
---         importModuleSpecifierPreference = 'non-relative',
---       },
---     },
---     javascript = {
---       preferences = {
---         importModuleSpecifierPreference = 'non-relative',
---       },
---     },
---   },
--- })
-
 -- ESLint Server
--- vim.lsp.config('eslint', {
---   filetypes = {
---     'javascript',
---     'javascriptreact',
---     'typescript',
---     'typescriptreact',
---   },
---   root_dir = vim.fs.root(0,
---     { '.eslintrc.js', '.eslintrc.cjs', '.eslintrc.yaml', '.eslintrc.json', 'eslint.config.js', 'package.json', '.git' }),
---   settings = {
---     codeActionOnSave = {
---       enable = true,
---       mode = 'all',
---     },
---     run = 'onType',
---     validate = 'on',
---   },
--- })
+vim.lsp.config('eslint', {
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+  },
+  root_dir = vim.fs.root(0,
+    { '.eslintrc.js', '.eslintrc.cjs', '.eslintrc.yaml', '.eslintrc.json', 'eslint.config.js', 'package.json', '.git' }),
+  settings = {
+    codeActionOnSave = {
+      enable = true,
+      mode = 'all',
+    },
+    run = 'onType',
+    validate = 'on',
+  },
+})
 
 -- Tailwind CSS Server
--- vim.lsp.config('tailwindcss', {
---   filetypes = {
---     'html',
---     'css',
---     'scss',
---     'javascript',
---     'javascriptreact',
---     'typescript',
---     'typescriptreact',
---   },
---   root_dir = vim.fs.root(0, { 'tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'package.json', '.git' }),
---   settings = {
---     tailwindCSS = {
---       classAttributes = { 'class', 'className', 'classList', 'ngClass' },
---     },
---   },
--- })
+vim.lsp.config('tailwindcss', {
+  filetypes = {
+    'html',
+    'css',
+    'scss',
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+  },
+  root_dir = vim.fs.root(0, { 'tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'package.json', '.git' }),
+  settings = {
+    tailwindCSS = {
+      classAttributes = { 'class', 'className', 'classList', 'ngClass' },
+    },
+  },
+})
