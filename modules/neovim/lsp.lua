@@ -40,7 +40,6 @@ vim.lsp.config("*", {
 
 vim.lsp.enable({
   "lua_ls",
-  "nil",
   "nixd",
   "gopls",
   "ts_ls",
@@ -148,4 +147,10 @@ vim.lsp.config("tailwindcss", {
       classAttributes = { "class", "className", "classList", "ngClass" },
     },
   },
+})
+
+vim.lsp.config("nixd", {
+  cmd = { "nixd" },
+  filetypes = { "nix" },
+  root_dir = vim.fs.root(0, { "flake.nix", "default.nix", ".git" }),
 })
