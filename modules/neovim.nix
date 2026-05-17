@@ -7,6 +7,8 @@ in
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
+      nvim-treesitter
+
       nvim-treesitter-parsers.html
       nvim-treesitter-parsers.css
       nvim-treesitter-parsers.javascript
@@ -48,6 +50,12 @@ in
         type = "lua";
         config = toLuaFile ./neovim/plugin/gitsigns.lua;
       }
+
+			{
+				plugin = none-ls-nvim;
+        type = "lua";
+				config = toLuaFile ./neovim/plugin/null-ls.lua;
+			}
     ];
 
     initLua = ''
