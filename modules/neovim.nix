@@ -1,130 +1,62 @@
-{ pkgs, neovimPkgs, ... }:
+{ pkgs, ... }:
 let
-  tinygo-vim = pkgs.vimUtils.buildVimPlugin {
-    name = "tinygo-vin";
-    src = pkgs.fetchFromGitHub {
-      owner = "sago35";
-      repo = "tinygo.vim";
-      rev = "main"; # or a specific commit hash
-      sha256 = "sha256-CHwSpQ4IClXe6NHTqPM8l8ET4rHFeNVYX7vfewkxSy0="; # Replace with actual hash
-    };
-  };
+  toLua = str: "\n${str}\n\n";
+  toLuaFile = file: "\n${builtins.readFile file}\n\n";
 in
 {
-  programs.neovim =
-  let
-    toLua = str: "lua << EOF\n${str}\nEOF\n";
-    toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-  in
-  {
+  programs.neovim = {
     enable = true;
-		# package = neovimPkgs.neovim-unwrapped;
-    viAlias = true;
-    vimAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter-parsers.html
+      nvim-treesitter-parsers.css
+      nvim-treesitter-parsers.javascript
+      nvim-treesitter-parsers.typescript
+      nvim-treesitter-parsers.vue
+      nvim-treesitter-parsers.tsx
+      nvim-treesitter-parsers.go
+      nvim-treesitter-parsers.rust
+      nvim-treesitter-parsers.scss
+      nvim-treesitter-parsers.nix
 
-    plugins = with neovimPkgs.vimPlugins; [
-			neo-tree-nvim
-      neodev-nvim
-			plenary-nvim
-			toggleterm-nvim
-			snipe-nvim
       copilot-vim
-      tinygo-vim
-
-
-			{
-				plugin = trouble-nvim;
-				config = toLuaFile ./neovim/plugin/trouble-nvim.lua;
-			}
-
-			{
-				plugin = mini-indentscope;
-				config = toLuaFile ./neovim/plugin/indentscope.lua;
-			}
-
-			{
-				plugin = copilot-lua;
-				config = toLuaFile ./neovim/plugin/copilot.lua;
-			}
-			{
-				plugin = codecompanion-nvim;
-				config = toLuaFile ./neovim/plugin/codecompanion.lua;
-			}
-
-			{
-				plugin = gitsigns-nvim;
-				config = toLuaFile ./neovim/plugin/gitsigns.lua;
-			}
-
-      {
-        plugin = nvim-lspconfig;
-        config = toLuaFile ./neovim/plugin/lsp.lua;
-      }
-      {
-        plugin = comment-nvim;
-        config = toLuaFile ./neovim/plugin/comment.lua;
-      }
-      {
-        plugin = gruvbox-nvim;
-        config = "colorscheme gruvbox";
-      }
-
-      {
-        plugin = nvim-cmp;
-        config = toLuaFile ./neovim/plugin/cmp.lua;
-      }
-			{
-				plugin = none-ls-nvim;
-				config = toLuaFile ./neovim/plugin/null-ls.lua;
-			}
-
-			{
-				plugin = nvim-autopairs;
-				config = toLua "require(\"nvim-autopairs\").setup()";
-			}
+      comment-nvim
+      nvim-ts-context-commentstring
+      neo-tree-nvim
+      blink-cmp
 
       telescope-fzf-native-nvim
-      {
-        plugin = telescope-nvim;
-        config = toLuaFile ./neovim/plugin/telescope.lua;
-      }
-
-      # telescope-nvim
-
-      cmp_luasnip
-      cmp-nvim-lsp
-
-      luasnip
-      friendly-snippets
+      toggleterm-nvim
+      snipe-nvim
 
       lualine-nvim
       nvim-web-devicons
 
       {
-        plugin = (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-vim
-          p.tree-sitter-bash
-          p.tree-sitter-lua
-          p.tree-sitter-python
-          p.tree-sitter-json
-					p.tree-sitter-vue
-					p.tree-sitter-rust
-					p.tree-sitter-javascript
-					p.tree-sitter-typescript
-					p.tree-sitter-css
-        ]));
-        config = toLuaFile ./neovim/plugin/treesitter.lua;
+        plugin = gruvbox-nvim;
+        type = "viml";
+        config = "colorscheme gruvbox";
       }
 
-      # vim-nix
+      {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = toLua "require(\"nvim-autopairs\").setup()";
+      }
+
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = toLuaFile ./neovim/plugin/gitsigns.lua;
+      }
     ];
 
-    extraLuaConfig = ''
-      ${builtins.readFile ./neovim/init.lua}
-			${builtins.readFile ./neovim/keymaps.lua}
-			${builtins.readFile ./neovim/plugin/toggleterm.lua}
-			${builtins.readFile ./neovim/plugin/snipe.lua}
+    initLua = ''
+          ${builtins.readFile ./neovim/init.lua}
+      		${builtins.readFile ./neovim/keymaps.lua}
+          ${builtins.readFile ./neovim/lsp.lua}
+          ${builtins.readFile ./neovim/comment.lua}
+          ${builtins.readFile ./neovim/plugin/toggleterm.lua}
+          ${builtins.readFile ./neovim/plugin/snipe.lua}
     '';
   };
 }
