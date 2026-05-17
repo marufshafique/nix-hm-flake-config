@@ -11,7 +11,6 @@
   environment.variables = {
     XCURSOR_THEME = "Adwaita";
     XCURSOR_SIZE = "24";
-    GREENLIGHT_DB_DNS = "postgres://greenlight:4514@localhost/greenlight?sslmode=disable";
   };
   environment.systemPackages = with pkgs; [
     cacert
