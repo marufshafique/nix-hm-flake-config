@@ -105,6 +105,7 @@
     eslint_d
 
     tree-sitter
+    pi-coding-agent
   ];
 
   programs.git = {
