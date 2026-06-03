@@ -35,6 +35,13 @@ in
       lualine-nvim
       nvim-web-devicons
 
+      mini-pick
+
+      {
+        plugin = codecompanion-nvim;
+        config = toLuaFile ./neovim/plugin/codecompanion.lua;
+      }
+
       {
         plugin = mini-clue;
         config = toLuaFile ./neovim/plugin/mini-clue.lua;

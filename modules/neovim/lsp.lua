@@ -38,16 +38,6 @@ vim.lsp.config("*", {
 	capabilities = require("blink.cmp").get_lsp_capabilities({}, true),
 })
 
-vim.lsp.enable({
-	"lua_ls",
-	"nixd",
-	"gopls",
-	"ts_ls",
-	"vue",
-	"tailwindcss",
-	"eslint",
-})
-
 vim.lsp.config("gopls", {
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod" },
@@ -60,24 +50,6 @@ vim.lsp.config("gopls", {
 			staticcheck = true,
 			gofumpt = true,
 		},
-	},
-})
-
-vim.lsp.config("ts_ls", {
-	cmd = { "typescript-language-server", "--stdio" },
-	init_options = {
-		plugins = {
-			{
-				name = "@vue/typescript-plugin",
-				location = "/Users/marufs/.nvm/versions/node/v20.18.3/lib/node_modules/@vue/typescript-plugin",
-				languages = { "javascript", "typescript", "vue" },
-			},
-		},
-	},
-	filetypes = {
-		"javascript",
-		"typescript",
-		"vue",
 	},
 })
 
@@ -153,4 +125,46 @@ vim.lsp.config("nixd", {
 	cmd = { "nixd" },
 	filetypes = { "nix" },
 	root_dir = vim.fs.root(0, { "flake.nix", "default.nix", ".git" }),
+})
+
+vim.lsp.config("emmet_ls", {
+	filetypes = { "html", "css", "scss", "javascriptreact", "typescriptreact", "vue" },
+	cmd = { "emmet-ls", "--stdio" },
+	root_dir = vim.fs.root(0, { ".git" }),
+})
+
+----------------------------------------------------------------
+--- Vue Language Server with TypeScript Plugin for Vue
+-----------------------------------------------------------------
+vim.lsp.config("ts_ls", {
+	cmd = { "typescript-language-server", "--stdio" },
+	init_options = {
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = "/Users/marufs/.npm-global/lib/node_modules/@vue/language-server",
+				languages = { "javascript", "typescript", "vue" },
+			},
+		},
+	},
+	filetypes = {
+		"javascript",
+		"typescript",
+		"vue",
+	},
+})
+
+----------------------------------------------------------------
+--- Vue Language Server with TypeScript Plugin for Vue
+-----------------------------------------------------------------
+
+vim.lsp.enable({
+	"lua_ls",
+	"nixd",
+	"gopls",
+	"ts_ls",
+	"vue_ls",
+	"tailwindcss",
+	"eslint",
+	"emmet_ls",
 })

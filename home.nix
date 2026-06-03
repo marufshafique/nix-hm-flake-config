@@ -38,7 +38,7 @@
     tree
 
     gcc
-    nodejs
+    nodejs_latest
     yarn
     bun
     go

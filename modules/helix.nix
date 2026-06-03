@@ -19,11 +19,38 @@
       };
     };
     languages = {
+      language-server = {
+        "typescript-language-server".config.plugins = [
+          {
+            name = "@vue/typescript-plugin";
+            location = "/Users/marufs/.npm-global/lib/node_modules/@vue/language-server";
+            languages = [ "vue" ];
+          }
+        ];
+        volar = {
+          command = "vue-language-server";
+          args = [ "--stdio" ];
+          config = {
+            vue.hybridMode = false;
+            typescript.tsdk = "/Users/marufs/.npm-global/lib/node_modules/typescript/lib";
+          };
+        };
+      };
       language = [
         {
           name = "vue";
-          auto-format = false;
+          scope = "source.vue";
+          injection-regex = "vue";
+          file-types = [ "vue" ];
+          roots = [ "package.json" ".git" ];
+          auto-format = true;
+          language-servers = [ "volar" ];
+          formatter = {
+            command = "prettier";
+            args = [ "--parser" "vue" ];
+          };
         }
+
         {
           name = "go";
           auto-format = false;

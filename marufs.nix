@@ -9,6 +9,8 @@
 		# ./modules/ghostty.nix
   ];
 
+
+  nix.package = pkgs.nix;
   home.username = "marufs";
   home.homeDirectory = "/Users/marufs";
 
@@ -50,6 +52,8 @@
 		fd
 		ripgrep
 		deno
+
+    devenv
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

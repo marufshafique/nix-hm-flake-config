@@ -17,12 +17,12 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
-vim.keymap.set("n", "gl", "$", { noremap = true, silent = true })
-vim.keymap.set("n", "gh", "0", { noremap = true, silent = true })
-vim.keymap.set("n", "ge", "G", { noremap = true, silent = true })
+vim.keymap.set("n", "gl", "$", { noremap = true, silent = true, desc = "Go to End of Line" })
+vim.keymap.set("n", "gh", "0", { noremap = true, silent = true, desc = "Go to Start of Line" })
+vim.keymap.set("n", "ge", "G", { noremap = true, silent = true, desc = "Go to End of File" })
 
-vim.keymap.set("n", "mm", "%", { noremap = true, silent = true })
-vim.keymap.set("n", "m", "v", { noremap = true, silent = true })
+vim.keymap.set("n", "mm", "%", { noremap = true, silent = true, desc = "Go to Matching Pair" })
+vim.keymap.set("n", "m", "v", { noremap = true, silent = true, desc = "Start Visual Mode" })
 
 -- telescope related keymaps
 vim.keymap.set(
@@ -49,3 +49,6 @@ vim.keymap.set(
 	vim.diagnostic.open_float,
 	{ noremap = true, silent = true, desc = "Open Diagnostic Float" }
 )
+
+vim.keymap.set("n", "<leader>lc", "<cmd>CodeCompanionChat<cr>", { noremap = true, silent = true, desc = "Copilot Chat" })
+vim.keymap.set("n", "<leader>ld", "<cmd>CodeCompanionCmd<cr>", { noremap = true, silent = true, desc = "Copilot Cmd" })
