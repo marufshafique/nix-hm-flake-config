@@ -36,9 +36,19 @@ in
       nvim-web-devicons
 
       {
+        plugin = render-markdown-nvim;
+        config = toLuaFile ./neovim/plugin/rendermarkdown.lua;
+      }
+
+      {
         plugin = mini-clue;
         config = toLuaFile ./neovim/plugin/mini-clue.lua;
       }
+
+			{
+				plugin = codecompanion-nvim;
+				config = toLuaFile ./neovim/plugin/codecompanion.lua;
+			}
 
       {
         plugin = gruvbox-nvim;
