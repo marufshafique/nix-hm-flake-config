@@ -67,6 +67,8 @@
     vlc
     mpv
 
+    file
+
     # cmake
     gnumake
 
