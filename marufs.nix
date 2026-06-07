@@ -47,6 +47,7 @@
 
     tree
 
+    file
 		fd
 		ripgrep
 		deno
