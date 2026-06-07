@@ -35,6 +35,17 @@ in
       lualine-nvim
       nvim-web-devicons
 
+      (pkgs.vimPlugins.codecompanion-nvim.overrideAttrs (old: {
+        version = "19.14.0";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "olimorris";
+          repo = "codecompanion.nvim";
+          tag = "v19.14.0";
+          hash = "sha256-/cx7LV866OPfTaK781dPbouPRjb2HXJZ3SwGVU/rnsA=";
+        };
+      }))
+
       {
         plugin = render-markdown-nvim;
         config = toLuaFile ./neovim/plugin/rendermarkdown.lua;
@@ -45,10 +56,10 @@ in
         config = toLuaFile ./neovim/plugin/mini-clue.lua;
       }
 
-			{
-				plugin = codecompanion-nvim;
-				config = toLuaFile ./neovim/plugin/codecompanion.lua;
-			}
+			# {
+			# 	plugin = codecompanion-nvim;
+			# 	config = toLuaFile ./neovim/plugin/codecompanion.lua;
+			# }
 
       {
         plugin = gruvbox-nvim;
@@ -82,6 +93,7 @@ in
           ${builtins.readFile ./neovim/comment.lua}
           ${builtins.readFile ./neovim/plugin/toggleterm.lua}
           ${builtins.readFile ./neovim/plugin/snipe.lua}
+          ${builtins.readFile ./neovim/plugin/codecompanion.lua}
     '';
   };
 }
