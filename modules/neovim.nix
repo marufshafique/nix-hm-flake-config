@@ -32,8 +32,13 @@ in
       toggleterm-nvim
       snipe-nvim
 
+      telescope-nvim
+
+      dressing-nvim
+
       lualine-nvim
       nvim-web-devicons
+      plenary-nvim
 
       (pkgs.vimPlugins.codecompanion-nvim.overrideAttrs (old: {
         version = "19.14.0";

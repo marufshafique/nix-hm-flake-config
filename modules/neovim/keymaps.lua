@@ -4,6 +4,7 @@ end, { noremap = true, silent = true, desc = "Format Buffer" })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { noremap = true, silent = true, desc = "Toggle NeoTree" })
 vim.keymap.set("n", "<leader>lc", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true, desc = "Toggle CodeCompanionChat" })
+vim.keymap.set("n", "<leader>lx", "<cmd>CodeCompanionChat<cr>", { noremap = true, silent = true, desc = "New CodeCompanionChat" })
 
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { noremap = true, silent = true, desc = "Quit" })
 vim.keymap.set("n", "<leader>Q", "<cmd>q!<cr>", { noremap = true, silent = true, desc = "Force Quit" })
