@@ -5,8 +5,6 @@
     ./modules/tmuxconf.nix
 		./modules/helix.nix
 		./modules/neovim.nix
-		# ./modules/fish.nix
-		# ./modules/ghostty.nix
   ];
 
   home.username = "marufs";
@@ -23,6 +21,7 @@
 
 		nil
 		nixd
+    nixfmt
 
 		stylua
 		lua
