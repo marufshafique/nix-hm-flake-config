@@ -103,6 +103,9 @@
     vscode-langservers-extracted
     eslint
     eslint_d
+    
+    discord
+    devenv
 
     tree-sitter
     pi-coding-agent
