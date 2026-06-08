@@ -5,8 +5,6 @@
     ./modules/tmuxconf.nix
 		./modules/helix.nix
 		./modules/neovim.nix
-		# ./modules/fish.nix
-		# ./modules/ghostty.nix
   ];
 
 
@@ -25,6 +23,7 @@
 
 		nil
 		nixd
+    nixfmt
 
 		stylua
 		lua
@@ -49,6 +48,7 @@
 
     tree
 
+    file
 		fd
 		ripgrep
 		deno

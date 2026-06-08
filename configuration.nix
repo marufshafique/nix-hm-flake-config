@@ -25,7 +25,11 @@
     	  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666"
     	'';
 
-  services.ollama.enable = true;
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-vulkan;
+  };
+
   services.displayManager.cosmic-greeter = {
     enable = false;
   };

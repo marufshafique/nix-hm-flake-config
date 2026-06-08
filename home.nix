@@ -67,6 +67,8 @@
     vlc
     mpv
 
+    file
+
     # cmake
     gnumake
 
@@ -103,8 +105,12 @@
     vscode-langservers-extracted
     eslint
     eslint_d
+    
+    discord
+    devenv
 
     tree-sitter
+    pi-coding-agent
   ];
 
   programs.git = {
