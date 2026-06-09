@@ -11,7 +11,6 @@ require("codecompanion").setup({
 	strategies = {
 		chat = {
 			adapter = "copilot",
-			model = "gemini-3.1-pro",
 		},
 		inline = {
 			adapter = "copilot",
