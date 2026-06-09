@@ -68,11 +68,6 @@ in
         config = toLuaFile ./neovim/plugin/mini-clue.lua;
       }
 
-			# {
-			# 	plugin = codecompanion-nvim;
-			# 	config = toLuaFile ./neovim/plugin/codecompanion.lua;
-			# }
-
       {
         plugin = gruvbox-nvim;
         type = "viml";
@@ -91,11 +86,11 @@ in
         config = toLuaFile ./neovim/plugin/gitsigns.lua;
       }
 
-			{
-				plugin = none-ls-nvim;
+      {
+        plugin = none-ls-nvim;
         type = "lua";
-				config = toLuaFile ./neovim/plugin/null-ls.lua;
-			}
+        config = toLuaFile ./neovim/plugin/null-ls.lua;
+      }
     ];
 
     initLua = ''
