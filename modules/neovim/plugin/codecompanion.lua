@@ -10,10 +10,11 @@ require("codecompanion").setup({
 	},
 	strategies = {
 		chat = {
-			adapter = "deepseek",
+			adapter = "copilot",
+			model = "gemini-3.1-pro",
 		},
 		inline = {
-			adapter = "deepseek",
+			adapter = "copilot",
 		},
 		cmd = {
 			adapter = "copilot",
