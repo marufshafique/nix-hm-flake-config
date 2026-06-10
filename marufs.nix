@@ -8,7 +8,7 @@
   ];
 
 
-  nix.package = pkgs.nix;
+  # nix.package = pkgs.nix;
   home.username = "marufs";
   home.homeDirectory = "/Users/marufs";
 
@@ -53,7 +53,10 @@
 		ripgrep
 		deno
 
+    lazygit
+
     devenv
+    devcontainer
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
