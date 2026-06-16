@@ -1,4 +1,4 @@
-# In case you want to pin a specific version of 
+# In case you want to pin a specific version of
 # pacakge, you can override the package like this:
 #
 # (pkgs.vimPlugins.codecompanion-nvim.overrideAttrs (old: {
@@ -93,11 +93,11 @@ in
     ];
 
     initLua = ''
+          vim.g.vue_language_server_path = "${vueLanguageServerPath}"
           ${builtins.readFile ./neovim/init.lua}
       		${builtins.readFile ./neovim/keymaps.lua}
-          vim.g.vue_language_server_path = "${vueLanguageServerPath}"
-          ${builtins.readFile ./neovim/lsp.lua}
-          ${builtins.readFile ./neovim/comment.lua}
+          ${builtins.readFile ./neovim/plugin/lsp.lua}
+          ${builtins.readFile ./neovim/plugin/comment.lua}
           ${builtins.readFile ./neovim/plugin/toggleterm.lua}
           ${builtins.readFile ./neovim/plugin/snipe.lua}
           ${builtins.readFile ./neovim/plugin/codecompanion.lua}
