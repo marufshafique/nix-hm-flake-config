@@ -136,24 +136,64 @@ vim.lsp.config("emmet_ls", {
 ----------------------------------------------------------------
 --- Vue Language Server with TypeScript Plugin for Vue
 -----------------------------------------------------------------
+local vue_language_server_path = "/Users/marufs/.npm-global/lib/node_modules/@vue/language-server"
+
 vim.lsp.config("ts_ls", {
 	cmd = { "typescript-language-server", "--stdio" },
 	init_options = {
 		plugins = {
 			{
 				name = "@vue/typescript-plugin",
-				location = "/Users/marufs/.npm-global/lib/node_modules/@vue/language-server",
-				languages = { "javascript", "typescript", "vue" },
+				location = vue_language_server_path,
+				languages = { "vue" },
+				configNamespace = "typescript",
 			},
 		},
 	},
 	filetypes = {
 		"javascript",
+		"javascriptreact",
 		"typescript",
+		"typescriptreact",
 		"vue",
 	},
 })
 
+vim.lsp.config("vue_ls", {
+	-- Invoke v3.x script directly; the `vue-language-server` binary on PATH
+	-- resolves to a stale v2.x install via a yarn-global symlink.
+	cmd = { "node", vue_language_server_path .. "/bin/vue-language-server.js", "--stdio" },
+	filetypes = { "vue" },
+	root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+	init_options = {
+		typescript = {
+			tsdk = "/Users/marufs/.npm-global/lib/node_modules/typescript/lib",
+		},
+	},
+	on_init = function(client)
+		client.handlers["tsserver/request"] = function(_, result, context)
+			local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "ts_ls" })
+			if #clients == 0 then
+				vim.notify(
+					"Could not find `ts_ls` lsp client, `vue_ls` would not work without it.",
+					vim.log.levels.ERROR
+				)
+				return
+			end
+			local ts_client = clients[1]
+			local param = unpack(result)
+			local id, command, payload = unpack(param)
+			ts_client:exec_cmd({
+				title = "vue_request_forward",
+				command = "typescript.tsserverRequest",
+				arguments = { command, payload },
+			}, { bufnr = context.bufnr }, function(_, r)
+				local response_data = { { id, r.body } }
+				client:notify("tsserver/response", response_data)
+			end)
+		end
+	end,
+})
 ----------------------------------------------------------------
 --- Vue Language Server with TypeScript Plugin for Vue
 -----------------------------------------------------------------
