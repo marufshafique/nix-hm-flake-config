@@ -2,6 +2,7 @@
 let
   toLua = str: "\n${str}\n\n";
   toLuaFile = file: "\n${builtins.readFile file}\n\n";
+  vueLanguageServerPath = "${pkgs.vue-language-server}/lib/language-tools/packages/language-server";
 in
 {
   programs.neovim = {
@@ -96,6 +97,7 @@ in
     initLua = ''
           ${builtins.readFile ./neovim/init.lua}
       		${builtins.readFile ./neovim/keymaps.lua}
+          vim.g.vue_language_server_path = "${vueLanguageServerPath}"
           ${builtins.readFile ./neovim/lsp.lua}
           ${builtins.readFile ./neovim/comment.lua}
           ${builtins.readFile ./neovim/plugin/toggleterm.lua}

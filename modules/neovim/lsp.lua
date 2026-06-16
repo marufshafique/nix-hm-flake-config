@@ -136,7 +136,8 @@ vim.lsp.config("emmet_ls", {
 ----------------------------------------------------------------
 --- Vue Language Server with TypeScript Plugin for Vue
 -----------------------------------------------------------------
-local vue_language_server_path = "/Users/marufs/.npm-global/lib/node_modules/@vue/language-server"
+-- Injected from neovim.nix as ${pkgs.vue-language-server}/lib/language-tools/packages/language-server
+local vue_language_server_path = vim.g.vue_language_server_path
 
 vim.lsp.config("ts_ls", {
 	cmd = { "typescript-language-server", "--stdio" },
@@ -160,8 +161,6 @@ vim.lsp.config("ts_ls", {
 })
 
 vim.lsp.config("vue_ls", {
-	-- Invoke v3.x script directly; the `vue-language-server` binary on PATH
-	-- resolves to a stale v2.x install via a yarn-global symlink.
 	cmd = { "node", vue_language_server_path .. "/bin/vue-language-server.js", "--stdio" },
 	filetypes = { "vue" },
 	root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
