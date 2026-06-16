@@ -100,7 +100,6 @@ in
           ${builtins.readFile ./neovim/plugin/comment.lua}
           ${builtins.readFile ./neovim/plugin/toggleterm.lua}
           ${builtins.readFile ./neovim/plugin/snipe.lua}
-          ${builtins.readFile ./neovim/plugin/codecompanion.lua}
     '';
   };
 }
