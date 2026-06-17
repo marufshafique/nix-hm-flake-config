@@ -1,5 +1,9 @@
 vim.keymap.set("n", "<leader>lf", function()
-	vim.lsp.buf.format()
+	vim.lsp.buf.format({
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+	})
 end, { noremap = true, silent = true, desc = "Format Buffer" })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { noremap = true, silent = true, desc = "Toggle NeoTree" })

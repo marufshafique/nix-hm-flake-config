@@ -29,7 +29,11 @@ local on_attach = function(_, bufnr)
 	bufmap("<leader>k", vim.lsp.buf.hover, "Hover Documentation")
 
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		vim.lsp.buf.format()
+		vim.lsp.buf.format({
+			filter = function(client)
+				return client.name == "null-ls"
+			end,
+		})
 	end, {})
 end
 
