@@ -6,6 +6,13 @@ vim.keymap.set("n", "<leader>lf", function()
 	})
 end, { noremap = true, silent = true, desc = "Format Buffer" })
 
+vim.keymap.set(
+	"n",
+	"<leader>ld",
+	"<cmd>Telescope diagnostics bufnr=0<CR>",
+	{ noremap = true, silent = true, desc = "Buffer Diagnostics" }
+)
+
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { noremap = true, silent = true, desc = "Toggle NeoTree" })
 vim.keymap.set(
 	"n",
@@ -65,5 +72,3 @@ vim.keymap.set(
 	vim.diagnostic.open_float,
 	{ noremap = true, silent = true, desc = "Open Diagnostic Float" }
 )
-
-vim.keymap.set("n", "<leader>ld", "<cmd>CodeCompanionCmd<cr>", { noremap = true, silent = true, desc = "Copilot Cmd" })
