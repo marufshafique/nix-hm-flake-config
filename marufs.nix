@@ -35,7 +35,7 @@
 		typescript
 		typescript-language-server
 		tailwindcss-language-server
-		nodejs
+		nodejs_22
 
 		yarn
 		eslint
@@ -43,8 +43,6 @@
 		prettier
 		emmet-ls
 		emmet-language-server
-
-		cloudflared
 
     tree
 
@@ -54,6 +52,8 @@
 		deno
 
     lazygit
+
+   poppler 
 
     devenv
     devcontainer

@@ -41,6 +41,10 @@
           # Set this to the version used during initial system setup
           system.stateVersion = 6;
 
+          environment.systemPackages = with pkgs; [
+            cloudflared
+          ];
+
           nixpkgs.hostPlatform = mac;
           nixpkgs.config = {
             allowUnfree = true;
