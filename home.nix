@@ -51,6 +51,8 @@
     nixd
     stylua
     lua-language-server
+    rustup
+    rust-analyzer
     vue-language-server
     typescript
     typescript-language-server

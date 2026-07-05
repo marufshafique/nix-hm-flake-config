@@ -35,7 +35,7 @@
 		typescript
 		typescript-language-server
 		tailwindcss-language-server
-		nodejs
+		nodejs_22
 
 		yarn
 		eslint
@@ -44,7 +44,8 @@
 		emmet-ls
 		emmet-language-server
 
-		cloudflared
+		rustup
+		rust-analyzer
 
     tree
 
@@ -54,6 +55,8 @@
 		deno
 
     lazygit
+
+   poppler 
 
     devenv
     devcontainer

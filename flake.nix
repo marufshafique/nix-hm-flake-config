@@ -34,11 +34,16 @@
       macosConfigurations =
         { pkgs, ... }:
         {
+          security.pam.services.sudo_local.touchIdAuth = true;
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
 
           # Set this to the version used during initial system setup
           system.stateVersion = 6;
+
+          environment.systemPackages = with pkgs; [
+            cloudflared
+          ];
 
           nixpkgs.hostPlatform = mac;
           nixpkgs.config = {
