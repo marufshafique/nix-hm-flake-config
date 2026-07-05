@@ -21,6 +21,9 @@
 		};
 	};
 
+  # Allow trusted user to use it nix env
+  nix.settings.trusted-users = [ "root" "@wheel" ];
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

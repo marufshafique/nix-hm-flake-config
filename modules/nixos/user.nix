@@ -5,10 +5,6 @@
     extraOptions = ''
       --ipv6 
       --fixed-cidr-v6="fd00:db8:1::/64"
-      --experimental
-      --ip6tables
-      --dns="8.8.8.8"
-      --dns="2001:4860:4860::8888"
     '';
   };
 
