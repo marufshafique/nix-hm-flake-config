@@ -108,6 +108,7 @@ vim.lsp.config("tailwindcss", {
 		"scss",
 		"jsx",
 		"tsx",
+		"vue",
 		"javascript",
 		"javascriptreact",
 		"typescript",
@@ -129,6 +130,18 @@ vim.lsp.config("nixd", {
 	cmd = { "nixd" },
 	filetypes = { "nix" },
 	root_dir = vim.fs.root(0, { "flake.nix", "default.nix", ".git" }),
+})
+
+vim.lsp.config("rust_analyzer", {
+	cmd = { "rust-analyzer" },
+	filetypes = { "rust" },
+	root_markers = { "Cargo.toml", "rust-project.json", ".git" },
+	settings = {
+		["rust-analyzer"] = {
+			cargo = { allFeatures = true },
+			checkOnSave = { command = "clippy" },
+		},
+	},
 })
 
 vim.lsp.config("emmet_ls", {
@@ -210,4 +223,5 @@ vim.lsp.enable({
 	"tailwindcss",
 	"eslint",
 	"emmet_ls",
+	"rust_analyzer",
 })

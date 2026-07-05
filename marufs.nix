@@ -44,6 +44,9 @@
 		emmet-ls
 		emmet-language-server
 
+		rustup
+		rust-analyzer
+
     tree
 
     file
