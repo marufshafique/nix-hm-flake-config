@@ -120,6 +120,11 @@
 
     pavucontrol
     audacity
+
+    rustc
+    cargo
+    rustfmt
+    clippy
   ];
 
   programs.git = {
