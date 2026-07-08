@@ -49,10 +49,15 @@
 
     nil
     nixd
+    nixfmt
     stylua
     lua-language-server
-    rustup
-    rust-analyzer
+
+    # cargo
+    # rustup
+    # rust-analyzer
+
+    prettier
     vue-language-server
     typescript
     typescript-language-server
@@ -60,6 +65,7 @@
     emmet-ls
     sqlite
     go-migrate
+    gofumpt
     wlr-which-key
 
     steam
@@ -93,8 +99,6 @@
     bibata-cursors
     adwaita-icon-theme
 
-    bitwarden-desktop
-
     chromium
     google-chrome
 
@@ -107,12 +111,15 @@
     vscode-langservers-extracted
     eslint
     eslint_d
-    
+
     discord
     devenv
 
     tree-sitter
     pi-coding-agent
+
+    pavucontrol
+    audacity
   ];
 
   programs.git = {
