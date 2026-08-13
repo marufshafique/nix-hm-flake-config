@@ -44,9 +44,6 @@
 		emmet-ls
 		emmet-language-server
 
-		rustup
-		rust-analyzer
-
     tree
 
     file
@@ -101,6 +98,9 @@
 			export BUN_INSTALL="$HOME/.bun"
 			export PATH="$BUN_INSTALL/bin:$PATH"
 			export PATH=$HOME/go/bin:$PATH
+
+      # Add nixpkgs-allow-unfree to allow unfree packages
+      export NIXPKGS_ALLOW_UNFREE=1
 		'';
     oh-my-zsh = {
       enable = true;
