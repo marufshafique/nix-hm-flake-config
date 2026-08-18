@@ -86,9 +86,9 @@ in
       }
 
       {
-        plugin = none-ls-nvim;
+        plugin = conform-nvim;
         type = "lua";
-        config = toLuaFile ./neovim/plugin/null-ls.lua;
+        config = toLuaFile ./neovim/plugin/conform.lua;
       }
     ];
 

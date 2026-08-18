@@ -29,11 +29,7 @@ local on_attach = function(_, bufnr)
 	bufmap("<leader>k", vim.lsp.buf.hover, "Hover Documentation")
 
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		vim.lsp.buf.format({
-			filter = function(client)
-				return client.name == "null-ls"
-			end,
-		})
+		require("conform").format({ bufnr = bufnr, lsp_fallback = true })
 	end, {})
 end
 
@@ -136,12 +132,6 @@ vim.lsp.config("rust_analyzer", {
 	cmd = { "rust-analyzer" },
 	filetypes = { "rust" },
 	root_markers = { "Cargo.toml", "rust-project.json", ".git" },
-	settings = {
-		["rust-analyzer"] = {
-			cargo = { allFeatures = true },
-			checkOnSave = { command = "clippy" },
-		},
-	},
 })
 
 vim.lsp.config("emmet_ls", {

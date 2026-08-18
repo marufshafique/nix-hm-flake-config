@@ -1,9 +1,5 @@
 vim.keymap.set("n", "<leader>lf", function()
-	vim.lsp.buf.format({
-		filter = function(client)
-			return client.name == "null-ls"
-		end,
-	})
+	require("conform").format({ async = true, lsp_fallback = true })
 end, { noremap = true, silent = true, desc = "Format Buffer" })
 
 vim.keymap.set(
