@@ -19,5 +19,8 @@
         "git"
       ];
     };
+    initContent = ''
+      eval "$(direnv hook zsh)"
+    '';
   };
 }

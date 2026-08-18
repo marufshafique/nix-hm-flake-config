@@ -22,12 +22,16 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    android-studio
+    android-tools
+
     dig
     lazygit
     fastfetch
     tmux
     vim
     helix
+    vscode
 
     ddcutil
 
@@ -53,10 +57,6 @@
     stylua
     lua-language-server
 
-    # cargo
-    # rustup
-    # rust-analyzer
-
     prettier
     vue-language-server
     typescript
@@ -77,7 +77,6 @@
 
     file
 
-    # cmake
     gnumake
 
     (kicad.override {
@@ -120,12 +119,12 @@
 
     pavucontrol
     audacity
-
-    rustc
-    cargo
-    rustfmt
-    clippy
   ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   programs.git = {
     enable = true;

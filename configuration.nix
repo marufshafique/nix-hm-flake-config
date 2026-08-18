@@ -49,7 +49,7 @@
     enable = true;
 
     systemd = {
-      enable = true;
+      enable = false;
       restartIfChanged = true;
     };
 
@@ -69,7 +69,7 @@
   };
 
   services.desktopManager.cosmic = {
-    enable = false;
+    enable = true;
     xwayland.enable = true;
   };
 
@@ -79,9 +79,25 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.droid-sans-mono
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.droid-sans-mono
+      noto-fonts
+      lohit-fonts.bengali
+    ];
+
+    fontconfig.defaultFonts = {
+      sansSerif = [
+        "Noto Sans Bengali"
+        "DejaVu Sans"
+      ];
+      serif = [
+        "Noto Serif Bengali"
+        "DejaVu Serif"
+      ];
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

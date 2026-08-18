@@ -4,35 +4,38 @@
   services.fwupd.enable = true;
   services.fstrim.enable = true;
 
-	hardware.graphics = {
-		enable = true;
-		enable32Bit = true;
-	};
-	# hardware.graphics.driSupport32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  # hardware.graphics.driSupport32Bit = true;
 
-	hardware.bluetooth = {
-		enable = true;
-		powerOnBoot = true;
-		settings = {
-			General = {
-				Experimental = true;
-				FastConnectable = true;
-			};
-		};
-	};
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+      };
+    };
+  };
 
   # Allow trusted user to use it nix env
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-	security = {
-		pki = {
-			# enb = true;
-			certificates = [];
-		};
-	};
+  security = {
+    pki = {
+      # enb = true;
+      certificates = [ ];
+    };
+  };
 
   services.pipewire = {
     enable = true;
@@ -84,7 +87,7 @@
 
   nix.optimise = {
     automatic = true;
-    dates = ["weekly"];
+    dates = [ "weekly" ];
   };
 
 }
