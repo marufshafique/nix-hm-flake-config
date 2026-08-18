@@ -36,6 +36,7 @@ in
       nvim-treesitter-parsers.rust
       nvim-treesitter-parsers.scss
       nvim-treesitter-parsers.nix
+      nvim-treesitter-parsers.dart
 
       copilot-vim
       comment-nvim

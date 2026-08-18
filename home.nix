@@ -48,6 +48,8 @@
     cobra-cli
     golangci-lint
 
+    flutter
+
     nil
     nixd
     nixfmt
