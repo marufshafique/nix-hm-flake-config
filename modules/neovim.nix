@@ -91,12 +91,6 @@ in
         type = "lua";
         config = toLuaFile ./neovim/plugin/conform.lua;
       }
-
-      {
-        plugin = flutter-tools-nvim;
-        type = "lua";
-        config = toLuaFile ./neovim/plugin/flutter-tools.lua;
-      }
     ];
 
     initLua = ''
