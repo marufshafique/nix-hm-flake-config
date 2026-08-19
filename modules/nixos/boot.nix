@@ -3,7 +3,11 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+  boot.kernelParams = [
+    "usbcore.autosuspend=-1"
+    "i915.enable_psr=0"
+    "i915.enable_fbc=0"
+  ];
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;

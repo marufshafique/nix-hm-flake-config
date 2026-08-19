@@ -134,6 +134,26 @@ vim.lsp.config("rust_analyzer", {
 	root_markers = { "Cargo.toml", "rust-project.json", ".git" },
 })
 
+-- Dart & Flutter Language Server
+-- `dart` is provided by the Flutter SDK (which bundles Dart) or the standalone Dart SDK,
+-- and the same server handles both pure Dart and Flutter projects.
+vim.lsp.config("dartls", {
+	cmd = { "dart", "language-server", "--protocol=lsp" },
+	filetypes = { "dart" },
+	root_markers = { "pubspec.yaml" },
+	settings = {
+		dart = {
+			analysisExcludedFolders = {
+				vim.fn.expand("$HOME/.pub-cache"),
+				vim.fn.expand("$HOME/flutter"),
+			},
+			updateImportsOnRename = true,
+			completeFunctionCalls = true,
+			showTodos = true,
+		},
+	},
+})
+
 vim.lsp.config("emmet_ls", {
 	filetypes = { "html", "css", "scss", "javascriptreact", "typescriptreact", "vue" },
 	cmd = { "emmet-ls", "--stdio" },
@@ -214,4 +234,5 @@ vim.lsp.enable({
 	"eslint",
 	"emmet_ls",
 	"rust_analyzer",
+	"dartls",
 })

@@ -1,6 +1,7 @@
 require("conform").setup({
 	formatters_by_ft = {
     rust = { "rustfmt" },
+		dart = { "dart_format" },
 		lua = { "stylua" },
 		dart = { "dart_format" },
 		javascript = { "prettier" },
