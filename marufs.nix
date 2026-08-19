@@ -3,10 +3,9 @@
 {
   imports = [
     ./modules/tmuxconf.nix
-		./modules/helix.nix
-		./modules/neovim.nix
+    ./modules/helix.nix
+    ./modules/neovim.nix
   ];
-
 
   # nix.package = pkgs.nix;
   home.username = "marufs";
@@ -16,44 +15,45 @@
 
   home.packages = with pkgs; [
     go
-		gopls
-		tinygo
+    gopls
+    tinygo
 
-		postgresql
+    postgresql
+    cocoapods
 
-		nil
-		nixd
+    nil
+    nixd
     nixfmt
 
-		stylua
-		lua
-		lua-language-server
-		vue-language-server
+    stylua
+    lua
+    lua-language-server
+    vue-language-server
 
-		ffmpeg
+    ffmpeg
 
-		typescript
-		typescript-language-server
-		tailwindcss-language-server
-		nodejs_22
+    typescript
+    typescript-language-server
+    tailwindcss-language-server
+    nodejs_22
 
-		yarn
-		eslint
-		eslint_d
-		prettier
-		emmet-ls
-		emmet-language-server
+    yarn
+    eslint
+    eslint_d
+    prettier
+    emmet-ls
+    emmet-language-server
 
     tree
 
     file
-		fd
-		ripgrep
-		deno
+    fd
+    ripgrep
+    deno
 
     lazygit
 
-   poppler 
+    poppler
 
     devenv
     devcontainer
@@ -71,37 +71,38 @@
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
-		initContent = ''
-			export NVM_DIR="$HOME/.nvm"
-				[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-				[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+    initContent = ''
+      			export NVM_DIR="$HOME/.nvm"
+      				[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+      				[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-			export EDITOR="hx"
-			export VISUAL="hx"
-			export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-			export PATH=$PATH:$(npm bin -g)
-			export DPRINT_INSTALL="/Users/marufs/.dprint"
-			export PATH="$DPRINT_INSTALL/bin:$PATH"
-			export PATH="$HOME/.npm-global/bin:$PATH"
+      			export EDITOR="hx"
+      			export VISUAL="hx"
+      			export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+      			export PATH=$PATH:$(npm bin -g)
+      			export DPRINT_INSTALL="/Users/marufs/.dprint"
+      			export PATH="$DPRINT_INSTALL/bin:$PATH"
+      			export PATH="$HOME/.npm-global/bin:$PATH"
 
-			# pnpm
-			export PNPM_HOME="/Users/marufs/Library/pnpm"
-			case ":$PATH:" in
-				*":$PNPM_HOME:"*) ;;
-				*) export PATH="$PNPM_HOME:$PATH" ;;
-			esac
-			# pnpm end
+      			# pnpm
+      			export PNPM_HOME="/Users/marufs/Library/pnpm"
+      			case ":$PATH:" in
+      				*":$PNPM_HOME:"*) ;;
+      				*) export PATH="$PNPM_HOME:$PATH" ;;
+      			esac
+      			# pnpm end
 
-			[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
+      			[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
 
-			# add to ~/.zshrc
-			export BUN_INSTALL="$HOME/.bun"
-			export PATH="$BUN_INSTALL/bin:$PATH"
-			export PATH=$HOME/go/bin:$PATH
+      			# add to ~/.zshrc
+      			export BUN_INSTALL="$HOME/.bun"
+      			export PATH="$BUN_INSTALL/bin:$PATH"
+      			export PATH=$HOME/go/bin:$PATH
+            export PATH="$HOME/development/flutter/bin:$PATH"
 
-      # Add nixpkgs-allow-unfree to allow unfree packages
-      export NIXPKGS_ALLOW_UNFREE=1
-		'';
+            # Add nixpkgs-allow-unfree to allow unfree packages
+            export NIXPKGS_ALLOW_UNFREE=1
+      		'';
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";

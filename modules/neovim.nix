@@ -36,6 +36,7 @@ in
       nvim-treesitter-parsers.rust
       nvim-treesitter-parsers.scss
       nvim-treesitter-parsers.nix
+      nvim-treesitter-parsers.dart
 
       copilot-vim
       comment-nvim
@@ -89,6 +90,12 @@ in
         plugin = conform-nvim;
         type = "lua";
         config = toLuaFile ./neovim/plugin/conform.lua;
+      }
+
+      {
+        plugin = flutter-tools-nvim;
+        type = "lua";
+        config = toLuaFile ./neovim/plugin/flutter-tools.lua;
       }
     ];
 
