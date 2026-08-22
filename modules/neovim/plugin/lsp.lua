@@ -1,96 +1,238 @@
+-- Setup completion
+require("blink.cmp").setup({
+	keymap = {
+		preset = "default",
+		["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+	},
+	sources = {
+		default = { "lsp", "path", "buffer" },
+	},
+})
+
 local on_attach = function(_, bufnr)
-	local bufmap = function(keys, func)
-		vim.keymap.set("n", keys, func, { buffer = bufnr })
+	local bufmap = function(keys, func, desc)
+		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	bufmap("<leader>r", vim.lsp.buf.rename)
-	bufmap("<leader>a", vim.lsp.buf.code_action)
+	bufmap("<leader>r", vim.lsp.buf.rename, "Rename")
+	bufmap("<leader>a", vim.lsp.buf.code_action, "Code Action")
 
-	bufmap("gd", vim.lsp.buf.definition)
-	bufmap("gD", vim.lsp.buf.declaration)
-	bufmap("gI", vim.lsp.buf.implementation)
-	bufmap("<leader>D", vim.lsp.buf.type_definition)
+	bufmap("gd", vim.lsp.buf.definition, "Go to Definition")
+	bufmap("gD", vim.lsp.buf.declaration, "Go to Declaration")
+	bufmap("gI", vim.lsp.buf.implementation, "Go to Implementation")
+	bufmap("<leader>D", vim.lsp.buf.type_definition, "Go to Type Definition")
 
-	bufmap("gr", require("telescope.builtin").lsp_references)
-	bufmap("<leader>s", require("telescope.builtin").lsp_document_symbols)
-	bufmap("<leader>S", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+	bufmap("gr", require("telescope.builtin").lsp_references, "Go to References")
+	bufmap("<leader>s", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
+	bufmap("<leader>S", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
-	bufmap("<leader>k", vim.lsp.buf.hover)
+	bufmap("<leader>k", vim.lsp.buf.hover, "Hover Documentation")
 
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		vim.lsp.buf.format()
+		require("conform").format({ bufnr = bufnr, lsp_fallback = true })
 	end, {})
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-require("neodev").setup({})
-require("lspconfig").lua_ls.setup({
+vim.lsp.config("*", {
 	on_attach = on_attach,
-	capabilities = capabilities,
-	root_dir = function()
-		return vim.loop.cwd()
-	end,
-	cmd = { "lua-language-server" },
+	capabilities = require("blink.cmp").get_lsp_capabilities({}, true),
+})
+
+vim.lsp.config("gopls", {
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod" },
+	root_markers = { "go.work", "go.mod", ".git" },
 	settings = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-			diagnostics = {
-				globals = { "vim" }, -- recognize the `vim` global
+		gopls = {
+			analyses = {
+				unusedparams = true,
 			},
+			staticcheck = true,
+			gofumpt = true,
 		},
 	},
 })
 
--- nix nil config
-require("lspconfig").nixd.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+vim.lsp.config("lua_ls", {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	settings = {
+		Lua = {
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim" } }, -- Fix 'undefined global vim' warnings
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+			telemetry = { enable = false },
+		},
+	},
 })
 
-require("lspconfig").rust_analyzer.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+-- ESLint Server
+vim.lsp.config("eslint", {
+	filetypes = {
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+	},
+	root_dir = vim.fs.root(0, {
+		".eslintrc.js",
+		".eslintrc.cjs",
+		".eslintrc.yaml",
+		".eslintrc.json",
+		"eslint.config.js",
+		"package.json",
+		".git",
+	}),
+	settings = {
+		codeActionOnSave = {
+			enable = true,
+			mode = "all",
+		},
+		run = "onType",
+		validate = "on",
+	},
 })
 
-require("lspconfig").volar.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+-- Tailwind CSS Server
+vim.lsp.config("tailwindcss", {
+	filetypes = {
+		"html",
+		"css",
+		"scss",
+		"jsx",
+		"tsx",
+		"vue",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+	},
+	cmd = { "tailwindcss-language-server", "--stdio" },
+	root_dir = vim.fs.root(
+		0,
+		{ "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "package.json", ".git" }
+	),
+	settings = {
+		tailwindCSS = {
+			classAttributes = { "class", "className", "classList", "ngClass" },
+		},
+	},
 })
 
-require("lspconfig").emmet_ls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+vim.lsp.config("nixd", {
+	cmd = { "nixd" },
+	filetypes = { "nix" },
+	root_dir = vim.fs.root(0, { "flake.nix", "default.nix", ".git" }),
 })
 
-require("lspconfig").svelte.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+vim.lsp.config("rust_analyzer", {
+	cmd = { "rust-analyzer" },
+	filetypes = { "rust" },
+	root_markers = { "Cargo.toml", "rust-project.json", ".git" },
 })
 
-require("lspconfig").tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "html", "css", "vue" },
+-- Dart & Flutter Language Server
+-- `dart` is provided by the Flutter SDK (which bundles Dart) or the standalone Dart SDK,
+-- and the same server handles both pure Dart and Flutter projects.
+vim.lsp.config("dartls", {
+	cmd = { "dart", "language-server", "--protocol=lsp" },
+	filetypes = { "dart" },
+	root_markers = { "pubspec.yaml" },
+	settings = {
+		dart = {
+			analysisExcludedFolders = {
+				vim.fn.expand("$HOME/.pub-cache"),
+				vim.fn.expand("$HOME/flutter"),
+			},
+			updateImportsOnRename = true,
+			completeFunctionCalls = true,
+			showTodos = true,
+		},
+	},
 })
 
-require("lspconfig").ts_ls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+vim.lsp.config("emmet_ls", {
+	filetypes = { "html", "css", "scss", "javascriptreact", "typescriptreact", "vue" },
+	cmd = { "emmet-ls", "--stdio" },
+	root_dir = vim.fs.root(0, { ".git" }),
+})
+
+----------------------------------------------------------------
+--- Vue Language Server with TypeScript Plugin for Vue
+-----------------------------------------------------------------
+-- Injected from neovim.nix as ${pkgs.vue-language-server}/lib/language-tools/packages/language-server
+local vue_language_server_path = vim.g.vue_language_server_path
+
+vim.lsp.config("ts_ls", {
+	cmd = { "typescript-language-server", "--stdio" },
 	init_options = {
 		plugins = {
 			{
 				name = "@vue/typescript-plugin",
-				location = "/Users/marufs/.nvm/versions/node/v20.18.3/lib/node_modules/@vue/typescript-plugin",
-				languages = { "javascript", "typescript", "vue" },
+				location = vue_language_server_path,
+				languages = { "vue" },
+				configNamespace = "typescript",
 			},
 		},
 	},
 	filetypes = {
 		"javascript",
+		"javascriptreact",
 		"typescript",
+		"typescriptreact",
 		"vue",
 	},
+})
+
+vim.lsp.config("vue_ls", {
+	cmd = { "node", vue_language_server_path .. "/bin/vue-language-server.js", "--stdio" },
+	filetypes = { "vue" },
+	root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+	init_options = {
+		typescript = {
+			tsdk = "/Users/marufs/.npm-global/lib/node_modules/typescript/lib",
+		},
+	},
+	on_init = function(client)
+		client.handlers["tsserver/request"] = function(_, result, context)
+			local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "ts_ls" })
+			if #clients == 0 then
+				vim.notify(
+					"Could not find `ts_ls` lsp client, `vue_ls` would not work without it.",
+					vim.log.levels.ERROR
+				)
+				return
+			end
+			local ts_client = clients[1]
+			local param = unpack(result)
+			local id, command, payload = unpack(param)
+			ts_client:exec_cmd({
+				title = "vue_request_forward",
+				command = "typescript.tsserverRequest",
+				arguments = { command, payload },
+			}, { bufnr = context.bufnr }, function(_, r)
+				local response_data = { { id, r.body } }
+				client:notify("tsserver/response", response_data)
+			end)
+		end
+	end,
+})
+----------------------------------------------------------------
+--- Vue Language Server with TypeScript Plugin for Vue
+-----------------------------------------------------------------
+
+vim.lsp.enable({
+	"lua_ls",
+	"nixd",
+	"gopls",
+	"ts_ls",
+	"vue_ls",
+	"tailwindcss",
+	"eslint",
+	"emmet_ls",
+	"rust_analyzer",
+	"dartls",
 })
