@@ -10,6 +10,7 @@
 
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.groups.dialout.members = [ "marufs" ];
   users.users.marufs = {
     isNormalUser = true;
     description = "Maruf Shafique";
@@ -22,6 +23,7 @@
       "docker"
       "docker-compose"
       "i2c"
+      "dialout"
     ];
     packages = with pkgs; [
       docker

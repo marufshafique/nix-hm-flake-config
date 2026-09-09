@@ -29,6 +29,12 @@
     vim
     helix
     vscode
+    arduino-ide
+    arduino-cli
+
+    platformio
+
+    python3
 
     ddcutil
 
