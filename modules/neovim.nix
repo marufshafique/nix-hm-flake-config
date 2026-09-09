@@ -36,6 +36,8 @@ in
       nvim-treesitter-parsers.rust
       nvim-treesitter-parsers.scss
       nvim-treesitter-parsers.nix
+      nvim-treesitter-parsers.c
+      nvim-treesitter-parsers.cpp
       nvim-treesitter-parsers.dart
 
       copilot-vim
@@ -101,6 +103,7 @@ in
           ${builtins.readFile ./neovim/plugin/comment.lua}
           ${builtins.readFile ./neovim/plugin/toggleterm.lua}
           ${builtins.readFile ./neovim/plugin/snipe.lua}
+          ${builtins.readFile ./neovim/plugin/platformio.lua}
     '';
   };
 }

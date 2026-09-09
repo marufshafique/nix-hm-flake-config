@@ -34,6 +34,9 @@
 
     platformio
 
+    # clangd - C/C++ language server used for PlatformIO / Arduino intellisense
+    clang-tools
+
     python3
 
     ddcutil
@@ -147,4 +150,15 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # User-wide clangd config: strips GCC-xtensa-only flags that PlatformIO's
+  # ESP32/Arduino toolchain adds (clang doesn't know them -> noisy diagnostics).
+  # See modules/neovim/plugin/lsp.lua for the clangd LSP setup.
+  xdg.configFile."clangd/config.yaml".text = ''
+    CompileFlags:
+      Remove:
+        - "-mlongcalls"
+        - "-fstrict-volatile-bitfields"
+        - "-fno-tree-switch-conversion"
+  '';
 }
