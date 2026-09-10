@@ -224,10 +224,26 @@ vim.lsp.config("vue_ls", {
 --- Vue Language Server with TypeScript Plugin for Vue
 -----------------------------------------------------------------
 
+-- clangd: C/C++ intellisense, also used for PlatformIO/Arduino projects.
+-- PlatformIO has no language server of its own; it is made LSP-consumable via
+-- compile_commands.json (see plugin/platformio.lua for the compiledb workflow).
+-- --query-driver lets clangd query the GCC cross-toolchains that PlatformIO
+-- keeps in ~/.platformio (xtensa/arm/etc.) for their built-in include paths.
+vim.lsp.config("clangd", {
+	cmd = {
+		"clangd",
+		"--background-index",
+		"--query-driver=" .. vim.fn.expand("$HOME") .. "/.platformio/packages/**/bin/*",
+	},
+	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "arduino" },
+	root_markers = { "compile_commands.json", "platformio.ini", "compile_flags.txt", ".git" },
+})
+
 vim.lsp.enable({
 	"lua_ls",
 	"nixd",
 	"gopls",
+	"clangd",
 	"ts_ls",
 	"vue_ls",
 	"tailwindcss",
