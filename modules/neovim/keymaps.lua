@@ -68,3 +68,17 @@ vim.keymap.set(
 	vim.diagnostic.open_float,
 	{ noremap = true, silent = true, desc = "Open Diagnostic Float" }
 )
+
+-- Copy absolute path to system clipboard
+vim.keymap.set("n", "<leader>pa", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	vim.notify("Copied absolute path: " .. path)
+end, { desc = "Copy absolute file path" })
+
+-- Copy relative path to system clipboard
+vim.keymap.set("n", "<leader>pr", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg("+", path)
+	vim.notify("Copied relative path: " .. path)
+end, { desc = "Copy relative file path" })
