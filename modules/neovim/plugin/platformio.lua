@@ -22,6 +22,7 @@
 --   <leader>pb  Build + refresh compile database   (pio run -t compiledb)
 --   <leader>pu  Upload firmware                    (pio run -t upload)
 --   <leader>pm  Serial monitor                     (pio device monitor)
+--                    -> press <C-q> inside the monitor to quit it
 --   <leader>pc  Clean                              (pio run -t clean)
 --   <leader>pC  Full clean                         (pio run -t fullclean)
 --   <leader>pD  Refresh compile_commands.json only (fast, no rebuild)
@@ -61,7 +62,7 @@ end
 --- is toggled open again after the previous run has finished.
 ---@param key string
 ---@param cmd string
----@param opts? { size?: number }
+---@param opts? { size?: number, on_open?: fun(term: table): nil }
 local function pio_terminal(key, cmd, opts)
 	local root = project_root()
 	if not root or not check_toggleterm() then
@@ -85,8 +86,11 @@ local function pio_terminal(key, cmd, opts)
 			direction = "horizontal",
 			size = opts.size or 14,
 			close_on_exit = false,
-			on_open = function()
+			on_open = function(t)
 				vim.cmd("startinsert!")
+				if opts.on_open then
+					opts.on_open(t)
+				end
 			end,
 		})
 		term.root = root
@@ -107,15 +111,19 @@ local function refresh_compile_commands()
 
 	vim.notify("Generating compile_commands.json ...", vim.log.levels.INFO, { title = "PlatformIO" })
 	vim.system({ "pio", "run", "-t", "compiledb" }, { cwd = root, text = true }, function(out)
-		if out.code == 0 then
-			vim.notify("compile_commands.json updated", vim.log.levels.INFO, { title = "PlatformIO" })
-		else
-			vim.notify(
-				"`pio run -t compiledb` failed:\n" .. (vim.trim(out.stderr or "") ~= "" and out.stderr or out.stdout),
-				vim.log.levels.ERROR,
-				{ title = "PlatformIO" }
-			)
-		end
+		-- `vim.system` callbacks run in a fast event context, where `vim.notify`
+		-- (nvim_echo) is not allowed. Defer to the main loop via vim.schedule.
+		vim.schedule(function()
+			if out.code == 0 then
+				vim.notify("compile_commands.json updated", vim.log.levels.INFO, { title = "PlatformIO" })
+			else
+				vim.notify(
+					"`pio run -t compiledb` failed:\n" .. (vim.trim(out.stderr or "") ~= "" and out.stderr or out.stdout),
+					vim.log.levels.ERROR,
+					{ title = "PlatformIO" }
+				)
+			end
+		end)
 	end)
 end
 
@@ -130,8 +138,17 @@ vim.api.nvim_create_user_command("PioUpload", function()
 end, { desc = "PlatformIO: upload firmware" })
 
 vim.api.nvim_create_user_command("PioMonitor", function()
-	pio_terminal("monitor", "pio device monitor", { size = 18 })
-end, { desc = "PlatformIO: serial monitor" })
+	pio_terminal("monitor", "pio device monitor", {
+		size = 18,
+		-- `pio device monitor` (pyserial miniterm) does not always exit cleanly
+		-- on <C-c>, so expose <C-q> to tear the terminal/process down instead.
+		on_open = function(term)
+			vim.keymap.set("t", "<C-q>", function()
+				term:shutdown()
+			end, { buffer = term.bufnr, silent = true, desc = "Quit PlatformIO monitor" })
+		end,
+	})
+end, { desc = "PlatformIO: serial monitor (quit with <C-q>)" })
 
 vim.api.nvim_create_user_command("PioClean", function()
 	pio_terminal("clean", "pio run -t clean")
@@ -155,7 +172,7 @@ end, {
 
 vim.keymap.set("n", "<leader>pb", "<cmd>PioBuild<CR>", { desc = "Build (PlatformIO)" })
 vim.keymap.set("n", "<leader>pu", "<cmd>PioUpload<CR>", { desc = "Upload (PlatformIO)" })
-vim.keymap.set("n", "<leader>pm", "<cmd>PioMonitor<CR>", { desc = "Serial monitor (PlatformIO)" })
+vim.keymap.set("n", "<leader>pm", "<cmd>PioMonitor<CR>", { desc = "Serial monitor (PlatformIO, <C-q> to quit)" })
 vim.keymap.set("n", "<leader>pc", "<cmd>PioClean<CR>", { desc = "Clean (PlatformIO)" })
 vim.keymap.set("n", "<leader>pC", "<cmd>PioFullClean<CR>", { desc = "Full clean (PlatformIO)" })
 vim.keymap.set("n", "<leader>pD", "<cmd>PioCompileCommands<CR>", { desc = "Refresh compile db (PlatformIO)" })
